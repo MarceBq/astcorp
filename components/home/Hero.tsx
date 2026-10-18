@@ -5,8 +5,8 @@ import { motion, useReducedMotion } from "framer-motion";
 import { ArrowRight, ChevronDown } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
-import { Highlight } from "@/components/ui/AccentTitle";
-import { CmykRule } from "@/components/ui/PrintMarks";
+import { MisregisterTitle } from "@/components/ui/MisregisterTitle";
+import { CmykBar, CmykRule, RegistrationMark, SheetNote } from "@/components/ui/PrintMarks";
 import { heroMedia } from "@/data/hero";
 import { cn } from "@/lib/utils";
 
@@ -96,6 +96,27 @@ export function Hero() {
         aria-hidden="true"
       />
 
+      {/* --------------------------------------------------------------
+          Capa 4 — Marcas de pliego sobre el video.
+          Marcas de registro en las esquinas, tira de control a sangre y la
+          anotación al margen. No alteran la estructura del hero.
+      --------------------------------------------------------------- */}
+      <RegistrationMark
+        size={30}
+        tone="light"
+        className="absolute left-5 top-24 z-10 opacity-70 lg:left-8 lg:top-28"
+      />
+      <RegistrationMark
+        size={30}
+        tone="light"
+        className="absolute right-5 top-24 z-10 opacity-70 lg:right-8 lg:top-28"
+      />
+      {/* Oculta bajo sm: ahí chocaría con el indicador de scroll */}
+      <SheetNote tone="light" className="absolute right-5 bottom-6 z-10 hidden sm:inline-flex lg:right-8">
+        ASTCORP — Pliego 01
+      </SheetNote>
+      <CmykRule className="absolute inset-x-0 bottom-0 z-10" />
+
       {/* -------------------------------------------------------------- */}
       <Container width="wide" className="relative z-10 pb-16 pt-32 sm:pb-20">
         <motion.div
@@ -105,18 +126,32 @@ export function Hero() {
           className="max-w-[54rem]"
         >
           <div className="flex items-center gap-3">
-            <CmykRule tone="dark" />
+            <CmykBar size="md" />
             <span className="font-display text-[14px] font-extrabold uppercase tracking-[0.26em] text-white">
               ASTCORP
             </span>
           </div>
 
-          {/* Peso 900 y escala mayor: el titular es la pieza gráfica del hero.
-              El fragmento resaltado va como bloque lime con texto casi negro,
-              que sobre el video contrasta mucho más que un subrayado. */}
-          <h1 className="mt-7 text-[clamp(2.75rem,7.4vw,6rem)] font-black leading-[0.95] tracking-[-0.045em] text-white">
-            Soluciones que <Highlight variant="marker">imprimen</Highlight> tu marca.
-          </h1>
+          {/* Titular fuera de registro: las planchas CMY se separan al cargar.
+              Sobre el video se suman en pantalla (multiplicar las apagaría).
+              El fragmento clave va entintado en lima con texto K. */}
+          <MisregisterTitle
+            as="h1"
+            text="Soluciones que imprimen tu marca."
+            tone="light"
+            animate
+            className="mt-7 text-[clamp(2.75rem,7.4vw,6rem)] font-black leading-[0.95] tracking-[-0.045em]"
+          >
+            Soluciones que{" "}
+            <span className="relative inline-block">
+              <span className="relative z-10 text-ink-key">imprimen</span>
+              <span
+                className="absolute -inset-x-[0.1em] -inset-y-[0.03em] z-0 -rotate-[0.8deg] bg-brand-lime"
+                aria-hidden="true"
+              />
+            </span>{" "}
+            tu marca.
+          </MisregisterTitle>
 
           <p className="mt-8 flex flex-wrap items-center gap-x-3 gap-y-1 font-display text-[clamp(0.95rem,1.4vw,1.15rem)] font-bold uppercase tracking-[0.14em] text-white/85">
             <span>Impresión</span>

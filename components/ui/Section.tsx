@@ -2,7 +2,7 @@ import { cn } from "@/lib/utils";
 import { Container } from "./Container";
 
 interface SectionProps extends React.HTMLAttributes<HTMLElement> {
-  tone?: "white" | "muted" | "soft" | "night" | "brand" | "blue" | "lime";
+  tone?: "white" | "muted" | "soft" | "blue" | "blueDeep" | "lime";
   size?: "sm" | "md" | "lg";
   width?: "default" | "wide" | "narrow";
   /** Desactiva el Container para secciones que gestionan su propio ancho. */
@@ -10,17 +10,18 @@ interface SectionProps extends React.HTMLAttributes<HTMLElement> {
 }
 
 /**
- * Paleta de fondos de sección. El ritmo del home alterna claro, oscuro y
- * acento; `night` es la base oscura y `lime` el bloque de acento.
+ * Fondos de sección: solo papel.
+ *
+ * El negro queda excluido como superficie a propósito — es tinta, no soporte.
+ * Los fondos son blanco, tonos claros, el azul de marca y el verde lima.
  */
 const tones = {
   white: "bg-surface text-ink",
   muted: "bg-surface-2 text-ink",
   soft: "bg-surface-3 text-ink",
-  night: "bg-night text-white",
-  brand: "bg-brand-blue-ink text-white",
   blue: "bg-brand-blue text-white",
-  lime: "bg-brand-lime text-night",
+  blueDeep: "bg-brand-blue-ink text-white",
+  lime: "bg-brand-lime text-ink-key",
 };
 
 const paddings = {

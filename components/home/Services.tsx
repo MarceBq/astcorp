@@ -4,19 +4,23 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
 import { RevealGroup, RevealItem } from "@/components/ui/Reveal";
 import { Button } from "@/components/ui/Button";
 import { ServiceCard } from "@/components/services/ServiceCard";
+import { SheetNote } from "@/components/ui/PrintMarks";
 import { services } from "@/data/services";
 
 /**
- * Las líneas de negocio.
+ * Las líneas de negocio — papel blanco, sección de respiro.
  *
- * La rejilla usa 3 columnas en escritorio: con 6 servicios quedan dos filas
- * completas, sin celdas sueltas.
+ * Recursos de imprenta: titular fuera de registro, trama de semitono
+ * magenta en degradado, y cada tarjeta con su tira de control, sus marcas de
+ * corte y la imagen tratada como separación de color.
+ *
+ * Tres columnas en escritorio: con 6 servicios quedan dos filas completas.
  */
 export function Services() {
   return (
-    <Section tone="white" size="lg" width="wide" className="relative overflow-hidden">
+    <Section tone="white" size="lg" width="wide" className="relative overflow-hidden paper">
       <div
-        className="pointer-events-none absolute -left-24 top-1/3 size-[420px] halftone opacity-40"
+        className="pointer-events-none absolute -left-20 top-1/4 size-[400px] halftone-coarse halftone-fade-r text-ink-magenta opacity-30"
         aria-hidden="true"
       />
 
@@ -38,13 +42,17 @@ export function Services() {
           }
         />
 
-        <RevealGroup gap={0.07} className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <RevealGroup gap={0.07} className="mt-16 grid gap-7 sm:grid-cols-2 lg:grid-cols-3">
           {services.map((service, index) => (
             <RevealItem key={service.slug} className="h-full">
               <ServiceCard service={service} index={index} />
             </RevealItem>
           ))}
         </RevealGroup>
+
+        <SheetNote withInks className="mt-12">
+          Astcorp — Pliego 04 · Servicios
+        </SheetNote>
       </div>
     </Section>
   );

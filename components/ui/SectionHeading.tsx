@@ -1,18 +1,17 @@
 import { cn } from "@/lib/utils";
 import { Reveal } from "./Reveal";
-import { CmykRule } from "./PrintMarks";
-import { AccentTitle, type HighlightVariant } from "./AccentTitle";
+import { CmykBar, RegistrationMark } from "./PrintMarks";
+import { MisregisterTitle } from "./MisregisterTitle";
 
 interface SectionHeadingProps {
   eyebrow?: string;
   title: string;
-  /** Fragmento de `title` a resaltar. Debe aparecer literalmente en él. */
+  /** Fragmento de `title` a entintar. Debe aparecer literalmente en él. */
   accent?: string;
-  highlight?: HighlightVariant;
   description?: React.ReactNode;
   align?: "left" | "center";
-  tone?: "light" | "dark";
-  /** Contenido a la derecha del título en desktop: normalmente un CTA. */
+  /** `dark` para fondos azules; `lime` para el bloque de acento. */
+  tone?: "light" | "dark" | "lime";
   action?: React.ReactNode;
   as?: "h2" | "h1" | "h3";
   className?: string;
@@ -21,14 +20,15 @@ interface SectionHeadingProps {
 /**
  * Encabezado de sección, común a todo el sitio.
  *
- * Titular en display con peso 800 y escala grande, etiqueta precedida por la
- * barra de registro CMYK y, opcionalmente, una palabra resaltada en lime.
+ * Tres recursos de imprenta: marca de registro + tira de control CMYK en la
+ * etiqueta, titular fuera de registro, y la palabra clave entintada sobre un
+ * parche de amarillo (K sobre amarillo = 16:1, el resaltado más legible de
+ * toda la paleta).
  */
 export function SectionHeading({
   eyebrow,
   title,
   accent,
-  highlight,
   description,
   align = "left",
   tone = "light",
@@ -37,6 +37,24 @@ export function SectionHeading({
   className,
 }: SectionHeadingProps) {
   const dark = tone === "dark";
+  const index = accent ? title.indexOf(accent) : -1;
+
+  const visible =
+    index === -1 || !accent ? (
+      title
+    ) : (
+      <>
+        {title.slice(0, index)}
+        <span className="relative inline-block">
+          <span className="relative z-10 text-ink-key">{accent}</span>
+          <span
+            className="absolute -inset-x-[0.1em] -inset-y-[0.02em] z-0 -rotate-[0.6deg] bg-ink-yellow"
+            aria-hidden="true"
+          />
+        </span>
+        {title.slice(index + accent.length)}
+      </>
+    );
 
   return (
     <div
@@ -54,32 +72,31 @@ export function SectionHeading({
               align === "center" && "justify-center",
             )}
           >
-            <CmykRule tone={tone} />
-            <span className={cn("eyebrow", dark ? "text-brand-lime" : "text-brand-blue")}>
-              {eyebrow}
-            </span>
+            <RegistrationMark size={20} tone={dark ? "light" : "ink"} />
+            <CmykBar size="sm" />
+            <span className={cn("eyebrow", dark ? "text-white" : "text-ink-key")}>{eyebrow}</span>
           </div>
         )}
 
-        <AccentTitle
+        <MisregisterTitle
           as={as}
           text={title}
-          accent={accent}
-          highlight={highlight ?? (dark ? "marker" : "underline")}
-          baseColor={dark ? "text-white" : "text-heading"}
+          tone={dark ? "light" : "ink"}
           className={cn(
             "font-extrabold",
             as === "h1"
               ? "text-[clamp(2.4rem,5.6vw,4.5rem)] leading-[0.98]"
               : "text-[clamp(2rem,4.2vw,3.25rem)] leading-[1.02]",
           )}
-        />
+        >
+          {visible}
+        </MisregisterTitle>
 
         {description && (
           <p
             className={cn(
               "mt-6 text-[17px] leading-relaxed",
-              dark ? "text-white/75" : "text-ink-2",
+              dark ? "text-white/80" : "text-ink-2",
             )}
           >
             {description}

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { MapPin, Phone, Mail, MessageCircle } from "lucide-react";
 import { Container } from "@/components/ui/Container";
+import { CmykRule, RegistrationMark, SheetNote } from "@/components/ui/PrintMarks";
 import { Logo } from "@/components/ui/Logo";
 import { footerNav } from "@/data/navigation";
 import { company } from "@/data/company";
@@ -27,10 +28,17 @@ export function Footer() {
 
   return (
     <footer className="relative overflow-hidden bg-brand-blue-ink text-white">
-      {/* Filete superior lime -> azul: firma de marca */}
+      {/* Tira de control de color: cierra el pliego */}
+      <CmykRule className="absolute inset-x-0 top-0 z-10 h-[6px]" />
+
       <div
-        className="absolute inset-x-0 top-0 h-[3px] bg-gradient-to-r from-brand-lime via-brand-blue to-brand-lime"
+        className="pointer-events-none absolute inset-0 halftone-bg halftone-fade-b text-white/15"
         aria-hidden="true"
+      />
+      <RegistrationMark
+        size={26}
+        tone="light"
+        className="absolute right-6 top-10 opacity-50 lg:right-10"
       />
 
       {/* Degradado corporativo y texturas */}
@@ -170,12 +178,14 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="flex flex-col gap-3 border-t border-white/15 py-6 text-[13px] text-white/65 sm:flex-row sm:items-center sm:justify-between">
+        <div className="flex flex-col gap-3 border-t border-white/20 py-6 text-[13px] text-white/65 sm:flex-row sm:items-center sm:justify-between">
           <p>
-            &copy; {year} <span className="text-white/80">{company.name}</span>. Todos los derechos
+            &copy; {year} <span className="text-white/85">{company.name}</span>. Todos los derechos
             reservados.
           </p>
-          <p>Fundada el {company.foundedLabel} &middot; Lima, Perú</p>
+          <SheetNote tone="light" withInks>
+            Astcorp — Pliego final · {company.address.city}
+          </SheetNote>
         </div>
       </Container>
     </footer>

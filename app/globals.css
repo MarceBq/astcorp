@@ -1,81 +1,90 @@
 @import "tailwindcss";
 
 /* ==========================================================================
-   ASTCORP — Design tokens
-   Dirección visual: estudio gráfico. Lime protagonista sobre base casi negra
-   y blanco, con el azul corporativo y el CMYK como colores de apoyo.
+   ASTCORP — Lenguaje de imprenta
+   --------------------------------------------------------------------------
+   DOS ROLES DE COLOR:
 
-   Regla de uso del lime (#AEF84F): su contraste contra blanco es 1.3:1, así
-   que NUNCA se usa como color de texto sobre fondo claro. Sobre claro va como
-   bloque, subrayado o relleno, siempre con texto oscuro encima. Como texto
-   solo se usa sobre la base oscura (14.6:1).
+   1. PAPEL (fondos): azul de marca #5151ED, verde lima #AEF84F, blanco y
+      tonos claros. Son las superficies sobre las que se imprime.
+
+   2. TINTAS CMYK (protagonista): cyan #00AEEF, magenta #EC008C,
+      amarillo #FFF200 y negro K #101117. Aportan el impacto: titulares
+      desregistrados, tramas, marcas, separadores y sombras de botón.
+
+   RESTRICCIÓN: el negro NO se usa como fondo de sección ni en áreas grandes.
+   Solo como tinta: texto, filetes, contornos, marcas de registro y detalles.
+
+   LEGIBILIDAD — contrastes medidos sobre los fondos reales:
+     amarillo sobre lima .... 1.1:1  -> jamás como texto, solo forma/trama
+     cyan sobre lima ........ 2.0:1  -> jamás como texto, solo forma/trama
+     magenta sobre lima ..... 3.3:1  -> solo titulares grandes
+     K sobre lima .......... 14.7:1  -> texto por defecto sobre lima
+     K sobre amarillo ...... 16.1:1  -> texto por defecto sobre amarillo
+     K sobre cyan ........... 7.8:1  -> texto por defecto sobre cyan
+     blanco sobre magenta ... 4.3:1  -> válido en texto grande
+     blanco sobre azul ...... 5.6:1  -> texto por defecto sobre azul
    ========================================================================== */
 
 @theme {
-  /* --- Acento protagonista ------------------------------------------- */
-  --color-brand-lime: #aef84f;
-  --color-brand-lime-strong: #9ceb3a;
-  --color-brand-lime-soft: #e7fdca;
-  --color-brand-lime-pale: #f5feea;
-
-  /* --- Base oscura
-     Casi negro con matiz frío: da el contraste que pide la dirección
-     gráfica sin caer en un negro plano. --------------------------------- */
-  --color-night: #101117;
-  --color-night-2: #1b1d26;
-  --color-night-3: #2b2e3b;
-
-  /* --- Azul corporativo, ahora color de apoyo ------------------------- */
+  /* --- Papel: colores de marca --------------------------------------- */
   --color-brand-blue: #5151ed;
   --color-brand-blue-soft: #e9e9ff;
   --color-brand-blue-pale: #f4f4ff;
   --color-brand-blue-deep: #2f2fa8;
   --color-brand-blue-ink: #1b1b63;
 
-  /* --- Apoyo CMYK: detalles de imprenta, nunca superficies grandes ---- */
-  --color-cyan: #00b4e4;
-  --color-magenta: #ec008c;
+  --color-brand-lime: #aef84f;
+  --color-brand-lime-strong: #9ceb3a;
+  --color-brand-lime-soft: #e7fdca;
+  --color-brand-lime-pale: #f5feea;
 
-  /* --- Superficies claras -------------------------------------------- */
+  /* --- Tintas CMYK: el protagonista visual ---------------------------- */
+  --color-ink-cyan: #00aeef;
+  --color-ink-magenta: #ec008c;
+  --color-ink-yellow: #fff200;
+  --color-ink-key: #101117;
+
+  /* Alias histórico de la tinta negra, usado en bordes y texto. */
+  --color-night: #101117;
+  --color-night-2: #1b1d26;
+  --color-night-3: #2b2e3b;
+
+  /* --- Superficies claras --------------------------------------------- */
   --color-surface: #ffffff;
   --color-surface-2: #eef1fb;
   --color-surface-3: #e2e7f7;
 
-  /* --- Texto ---------------------------------------------------------- */
+  /* --- Texto ----------------------------------------------------------- */
   --color-heading: #101117;
   --color-ink: #1c1f3b;
   --color-ink-2: #4b5175;
   --color-ink-3: #616890;
 
-  /* --- Bordes --------------------------------------------------------- */
+  /* --- Filetes ---------------------------------------------------------- */
   --color-line: #dbdff0;
   --color-line-strong: #bfc6e2;
 
-  /* --- Tipografía
-     Archivo da el contraste de pesos (400 vs 900) que necesita una
-     identidad de estudio gráfico; Inter sostiene la lectura. ----------- */
+  /* --- Tipografía -------------------------------------------------------- */
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system, sans-serif;
   --font-display: var(--font-archivo), var(--font-inter), ui-sans-serif, system-ui, sans-serif;
   --font-editorial: var(--font-instrument), "Iowan Old Style", Georgia, serif;
 
-  /* --- Radios --------------------------------------------------------- */
+  /* --- Radios ------------------------------------------------------------ */
   --radius-card: 14px;
   --radius-media: 18px;
 
-  /* --- Sombras
-     `hard` es un recurso gráfico (bloque sólido desplazado), no una sombra
-     de profundidad: es lo que da el carácter de cartel impreso. -------- */
+  /* --- Sombras: bloque sólido de tinta desplazado ------------------------ */
   --shadow-soft: 0 1px 2px rgb(16 17 23 / 0.04), 0 8px 24px -12px rgb(16 17 23 / 0.12);
   --shadow-lift: 0 2px 4px rgb(16 17 23 / 0.05), 0 22px 46px -22px rgb(16 17 23 / 0.28);
-  --shadow-hard: 6px 6px 0 0 var(--color-night);
-  --shadow-hard-sm: 4px 4px 0 0 var(--color-night);
+  --shadow-hard: 6px 6px 0 0 var(--color-ink-key);
+  --shadow-hard-sm: 4px 4px 0 0 var(--color-ink-key);
+  --shadow-ink-magenta: 5px 5px 0 0 var(--color-ink-magenta);
+  --shadow-ink-cyan: 5px 5px 0 0 var(--color-ink-cyan);
   --shadow-hard-lime: 6px 6px 0 0 var(--color-brand-lime);
-  --shadow-hard-blue: 6px 6px 0 0 var(--color-brand-blue);
 
-  /* --- Timings -------------------------------------------------------- */
   --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
 
-  /* --- Animaciones ---------------------------------------------------- */
   --animate-marquee: marquee 46s linear infinite;
 
   @keyframes marquee {
@@ -86,6 +95,29 @@
       transform: translateX(-50%);
     }
   }
+
+  /* Las planchas entran desde el registro perfecto hasta su desplazamiento
+     final. Cada capa lleva su propio --mx/--my en línea. */
+  @keyframes misregister-in {
+    from {
+      transform: translate(0, 0);
+      opacity: 0;
+    }
+    to {
+      transform: translate(var(--mx), var(--my));
+      opacity: 1;
+    }
+  }
+}
+
+/* Alias con los nombres cortos del encargo, para usar en CSS a mano. */
+:root {
+  --brand-blue: var(--color-brand-blue);
+  --brand-lime: var(--color-brand-lime);
+  --ink-cyan: var(--color-ink-cyan);
+  --ink-magenta: var(--color-ink-magenta);
+  --ink-yellow: var(--color-ink-yellow);
+  --ink-key: var(--color-ink-key);
 }
 
 /* ==========================================================================
@@ -123,12 +155,12 @@
   }
 
   ::selection {
-    background-color: var(--color-brand-lime);
-    color: var(--color-night);
+    background-color: var(--color-ink-yellow);
+    color: var(--color-ink-key);
   }
 
   :focus-visible {
-    outline: 2px solid var(--color-brand-blue);
+    outline: 2px solid var(--color-ink-magenta);
     outline-offset: 3px;
     border-radius: 3px;
   }
@@ -139,10 +171,110 @@
 }
 
 /* ==========================================================================
-   Utilidades del sistema
+   Recursos de imprenta
    ========================================================================== */
 
-/* Etiqueta de sección */
+/* --- Titular fuera de registro ------------------------------------------
+   Las capas de color van DETRÁS del texto (z-index negativo) y en
+   `mix-blend-mode: multiply`, de modo que donde se cruzan generan el color
+   mezclado real. El texto legible nunca se sustituye. */
+@utility misregister-title {
+  position: relative;
+}
+
+/* Sin `z-index: -1` a propósito: con índice negativo las planchas caen por
+   detrás del fondo de la sección y desaparecen. Al ir posicionadas y antes
+   que el texto en el orden del DOM, este las cubre igualmente, y sin crear
+   contexto de apilado siguen multiplicando contra el fondo real. */
+@utility misregister-layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* --- Trama de semitono ---------------------------------------------------
+   Usa `currentColor`, así que la tinta se elige con una clase de texto
+   (`text-ink-cyan`, `text-ink-key`...) en el mismo elemento. */
+@utility halftone-bg {
+  background-image: radial-gradient(currentColor 1.4px, transparent 1.5px);
+  background-size: 12px 12px;
+}
+
+@utility halftone-fine {
+  background-image: radial-gradient(currentColor 1px, transparent 1.1px);
+  background-size: 7px 7px;
+}
+
+@utility halftone-coarse {
+  background-image: radial-gradient(currentColor 2.4px, transparent 2.5px);
+  background-size: 20px 20px;
+}
+
+/* Degradados de densidad: la trama se desvanece como en un degradado impreso */
+@utility halftone-fade-b {
+  mask-image: linear-gradient(to bottom, black, transparent);
+}
+
+@utility halftone-fade-t {
+  mask-image: linear-gradient(to top, black, transparent);
+}
+
+@utility halftone-fade-r {
+  mask-image: linear-gradient(to right, black, transparent);
+}
+
+/* --- Sobreimpresión ------------------------------------------------------
+   Contenedor de formas CMYK. No lleva `isolation`, a propósito: las formas
+   deben multiplicar también contra el fondo de la sección, no solo entre sí. */
+@utility overprint-shapes {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+/* Sobre papel claro las tintas multiplican, igual que en la máquina. */
+@utility overprint {
+  mix-blend-mode: multiply;
+}
+
+/* Sobre fondo oscuro (el video del hero) multiplicar las apagaría: ahí las
+   tintas se suman en pantalla para que sigan leyéndose como color. */
+@utility overprint-screen {
+  mix-blend-mode: screen;
+}
+
+/* --- Botón sello de tinta -------------------------------------------------
+   Magenta en reposo, cyan al pasar el cursor, K al pulsar. */
+@utility ink-button {
+  box-shadow: var(--shadow-ink-magenta);
+  transition:
+    box-shadow 0.2s var(--ease-out-soft),
+    transform 0.2s var(--ease-out-soft);
+
+  &:hover {
+    box-shadow: 8px 8px 0 0 var(--color-ink-cyan);
+    transform: translate(-3px, -3px);
+  }
+
+  &:active {
+    box-shadow: 2px 2px 0 0 var(--color-ink-key);
+    transform: translate(0, 0);
+  }
+}
+
+/* --- Textura de papel, muy sutil ----------------------------------------- */
+@utility paper {
+  background-image:
+    repeating-linear-gradient(0deg, rgb(16 17 23 / 0.014) 0 1px, transparent 1px 3px),
+    repeating-linear-gradient(90deg, rgb(16 17 23 / 0.014) 0 1px, transparent 1px 3px);
+}
+
+/* ==========================================================================
+   Utilidades heredadas del sistema
+   ========================================================================== */
+
 @utility eyebrow {
   font-size: 0.6875rem;
   line-height: 1;
@@ -151,7 +283,16 @@
   text-transform: uppercase;
 }
 
-/* Número/dato grande */
+/* Anotación de pliego: numeración y notas al margen */
+@utility sheet-note {
+  font-family: var(--font-display);
+  font-size: 0.625rem;
+  line-height: 1;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
 @utility stat-figure {
   font-family: var(--font-display);
   font-weight: 800;
@@ -159,25 +300,6 @@
   font-variant-numeric: tabular-nums;
 }
 
-/* --- Texturas de imprenta ------------------------------------------- */
-
-/* Trama de semitono. La variante se elige según el fondo de la sección. */
-@utility halftone {
-  background-image: radial-gradient(var(--color-line-strong) 1.2px, transparent 1.2px);
-  background-size: 11px 11px;
-}
-
-@utility halftone-dark {
-  background-image: radial-gradient(rgb(255 255 255 / 0.16) 1.2px, transparent 1.2px);
-  background-size: 11px 11px;
-}
-
-@utility halftone-lime {
-  background-image: radial-gradient(rgb(16 17 23 / 0.16) 1.2px, transparent 1.2px);
-  background-size: 11px 11px;
-}
-
-/* Retícula de líneas finas */
 @utility grid-lines {
   background-image:
     linear-gradient(to right, var(--color-line) 1px, transparent 1px),
@@ -185,7 +307,6 @@
   background-size: 64px 64px;
 }
 
-/* Trama diagonal para placeholders de imagen */
 @utility hatch {
   background-image: repeating-linear-gradient(
     -45deg,
@@ -196,24 +317,15 @@
   );
 }
 
-/* --- Tipografía calada ------------------------------------------------ */
-
 @utility text-stroke-ink {
   color: transparent;
-  -webkit-text-stroke: 2px var(--color-night);
-}
-
-@utility text-stroke-lime {
-  color: transparent;
-  -webkit-text-stroke: 2px var(--color-brand-lime);
+  -webkit-text-stroke: 2px var(--color-ink-key);
 }
 
 @utility text-stroke-white {
   color: transparent;
   -webkit-text-stroke: 2px rgb(255 255 255 / 0.45);
 }
-
-/* --- Varios ----------------------------------------------------------- */
 
 @utility mask-fade-x {
   mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);

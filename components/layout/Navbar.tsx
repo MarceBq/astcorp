@@ -5,6 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
 import { ChevronDown, Menu } from "lucide-react";
+import { CmykRule } from "@/components/ui/PrintMarks";
 import { Container } from "@/components/ui/Container";
 import { Logo } from "@/components/ui/Logo";
 import { Button } from "@/components/ui/Button";
@@ -49,10 +50,12 @@ export function Navbar() {
         className={cn(
           "fixed inset-x-0 top-0 z-50 transition-[background-color,border-color,box-shadow] duration-300",
           transparent
-            ? "border-b border-white/10 bg-transparent"
-            : "border-b border-brand-blue-ink/15 bg-brand-lime shadow-[0_1px_16px_-8px_rgba(23,25,35,0.35)]",
+            ? "bg-transparent"
+            : "bg-brand-lime shadow-[0_1px_16px_-8px_rgba(16,17,23,0.35)]",
         )}
       >
+        {/* Tira de control de color al pie del header, como en todo pliego */}
+        <CmykRule className="absolute inset-x-0 bottom-0 h-[4px]" />
         <Container width="wide">
           <div className="flex h-[68px] items-center justify-between gap-6 lg:h-[76px]">
             <Logo tone={transparent ? "light" : "onLime"} />

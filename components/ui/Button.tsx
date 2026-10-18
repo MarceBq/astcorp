@@ -6,46 +6,46 @@ type Size = "sm" | "md" | "lg";
 
 const base =
   "group/btn inline-flex items-center justify-center gap-2 rounded-[10px] font-bold tracking-[-0.005em] " +
-  "transition-[background-color,border-color,color,box-shadow,transform] duration-200 " +
+  "transition-[background-color,border-color,color] duration-200 " +
   "disabled:pointer-events-none disabled:opacity-50 whitespace-nowrap";
 
-/** Relleno y color de texto. */
+/**
+ * Relleno y color de texto.
+ * Los fondos son papel (azul, lima, blanco); la tinta K queda para el texto,
+ * el contorno y la sombra.
+ */
 const surfaces: Record<Variant, string> = {
   primary: "bg-brand-blue text-white hover:bg-brand-blue-deep",
-  accent: "bg-brand-lime text-night hover:bg-brand-lime-strong",
-  dark: "bg-night text-white hover:bg-night-2",
-  outline: "bg-white text-night hover:bg-night hover:text-white",
+  accent: "bg-brand-lime text-ink-key hover:bg-brand-lime-strong",
+  dark: "bg-ink-key text-white hover:bg-night-2",
+  /* Al pasar el cursor se entinta de amarillo: K sobre amarillo da 16:1 */
+  outline: "bg-white text-ink-key hover:bg-ink-yellow",
   ghost: "text-brand-blue hover:bg-brand-lime-pale",
-  onDark: "bg-white/10 text-white backdrop-blur-md hover:bg-white hover:text-night",
+  onDark: "bg-white/10 text-white backdrop-blur-md hover:bg-white hover:text-ink-key",
 };
 
-/** Contorno, separado para poder omitirlo con `borderless`. */
+/** Contorno en tinta K, separado para poder omitirlo con `borderless`. */
 const borders: Record<Variant, string> = {
-  primary: "border-2 border-night",
-  accent: "border-2 border-night",
-  dark: "border-2 border-night",
-  outline: "border-2 border-night",
+  primary: "border-2 border-ink-key",
+  accent: "border-2 border-ink-key",
+  dark: "border-2 border-ink-key",
+  outline: "border-2 border-ink-key",
   ghost: "border-2 border-brand-blue/40 hover:border-brand-blue",
   onDark: "border-2 border-white/60 hover:border-white",
 };
 
 /**
- * Sombra sólida desplazada + micro-desplazamiento al pasar el cursor y
- * hundido al pulsar. Es lo que da el carácter de cartel serigrafiado.
+ * Sello de tinta: sombra sólida magenta en reposo, cyan al pasar el cursor y
+ * K al pulsar, con el botón desplazándose como si se entintara el papel.
+ * Es la utilidad `.ink-button` de globals.css.
  */
 const press: Record<Variant, string> = {
-  primary:
-    "shadow-hard-sm hover:-translate-x-[2px] hover:-translate-y-[2px] hover:shadow-hard active:translate-x-0 active:translate-y-0 active:shadow-[2px_2px_0_0_var(--color-night)]",
-  accent:
-    "shadow-hard-sm hover:-translate-x-[2px] hover:-translate-y-[2px] hover:shadow-hard active:translate-x-0 active:translate-y-0 active:shadow-[2px_2px_0_0_var(--color-night)]",
-  dark:
-    "shadow-hard-sm hover:-translate-x-[2px] hover:-translate-y-[2px] hover:shadow-hard-lime active:translate-x-0 active:translate-y-0 active:shadow-[2px_2px_0_0_var(--color-night)]",
-  outline:
-    "shadow-hard-sm hover:-translate-x-[2px] hover:-translate-y-[2px] hover:shadow-hard active:translate-x-0 active:translate-y-0 active:shadow-[2px_2px_0_0_var(--color-night)]",
+  primary: "ink-button",
+  accent: "ink-button",
+  dark: "ink-button",
+  outline: "ink-button",
   ghost: "active:translate-y-px",
-  /* Sobre el video una sombra oscura no se vería: aquí el desplazado es lime. */
-  onDark:
-    "hover:-translate-x-[2px] hover:-translate-y-[2px] hover:shadow-hard-lime active:translate-x-0 active:translate-y-0",
+  onDark: "ink-button",
 };
 
 const sizes: Record<Size, string> = {
@@ -57,7 +57,7 @@ const sizes: Record<Size, string> = {
 interface CommonProps {
   variant?: Variant;
   size?: Size;
-  /** Omite contorno y sombra sólida. La altura no cambia. */
+  /** Omite contorno y sello de tinta. La altura no cambia. */
   borderless?: boolean;
   className?: string;
   children: React.ReactNode;
