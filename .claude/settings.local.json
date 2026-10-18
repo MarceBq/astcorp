@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(node -e ' *)",
+      "PowerShell(npm run build 2>&1)",
+      "PowerShell(npm run typecheck 2>&1)"
+    ]
+  }
+}

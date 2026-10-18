@@ -1,0 +1,249 @@
+@import "tailwindcss";
+
+/* ==========================================================================
+   ASTCORP — Design tokens
+   Dirección visual: estudio gráfico. Lime protagonista sobre base casi negra
+   y blanco, con el azul corporativo y el CMYK como colores de apoyo.
+
+   Regla de uso del lime (#AEF84F): su contraste contra blanco es 1.3:1, así
+   que NUNCA se usa como color de texto sobre fondo claro. Sobre claro va como
+   bloque, subrayado o relleno, siempre con texto oscuro encima. Como texto
+   solo se usa sobre la base oscura (14.6:1).
+   ========================================================================== */
+
+@theme {
+  /* --- Acento protagonista ------------------------------------------- */
+  --color-brand-lime: #aef84f;
+  --color-brand-lime-strong: #9ceb3a;
+  --color-brand-lime-soft: #e7fdca;
+  --color-brand-lime-pale: #f5feea;
+
+  /* --- Base oscura
+     Casi negro con matiz frío: da el contraste que pide la dirección
+     gráfica sin caer en un negro plano. --------------------------------- */
+  --color-night: #101117;
+  --color-night-2: #1b1d26;
+  --color-night-3: #2b2e3b;
+
+  /* --- Azul corporativo, ahora color de apoyo ------------------------- */
+  --color-brand-blue: #5151ed;
+  --color-brand-blue-soft: #e9e9ff;
+  --color-brand-blue-pale: #f4f4ff;
+  --color-brand-blue-deep: #2f2fa8;
+  --color-brand-blue-ink: #1b1b63;
+
+  /* --- Apoyo CMYK: detalles de imprenta, nunca superficies grandes ---- */
+  --color-cyan: #00b4e4;
+  --color-magenta: #ec008c;
+
+  /* --- Superficies claras -------------------------------------------- */
+  --color-surface: #ffffff;
+  --color-surface-2: #eef1fb;
+  --color-surface-3: #e2e7f7;
+
+  /* --- Texto ---------------------------------------------------------- */
+  --color-heading: #101117;
+  --color-ink: #1c1f3b;
+  --color-ink-2: #4b5175;
+  --color-ink-3: #616890;
+
+  /* --- Bordes --------------------------------------------------------- */
+  --color-line: #dbdff0;
+  --color-line-strong: #bfc6e2;
+
+  /* --- Tipografía
+     Archivo da el contraste de pesos (400 vs 900) que necesita una
+     identidad de estudio gráfico; Inter sostiene la lectura. ----------- */
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-display: var(--font-archivo), var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-editorial: var(--font-instrument), "Iowan Old Style", Georgia, serif;
+
+  /* --- Radios --------------------------------------------------------- */
+  --radius-card: 14px;
+  --radius-media: 18px;
+
+  /* --- Sombras
+     `hard` es un recurso gráfico (bloque sólido desplazado), no una sombra
+     de profundidad: es lo que da el carácter de cartel impreso. -------- */
+  --shadow-soft: 0 1px 2px rgb(16 17 23 / 0.04), 0 8px 24px -12px rgb(16 17 23 / 0.12);
+  --shadow-lift: 0 2px 4px rgb(16 17 23 / 0.05), 0 22px 46px -22px rgb(16 17 23 / 0.28);
+  --shadow-hard: 6px 6px 0 0 var(--color-night);
+  --shadow-hard-sm: 4px 4px 0 0 var(--color-night);
+  --shadow-hard-lime: 6px 6px 0 0 var(--color-brand-lime);
+  --shadow-hard-blue: 6px 6px 0 0 var(--color-brand-blue);
+
+  /* --- Timings -------------------------------------------------------- */
+  --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
+
+  /* --- Animaciones ---------------------------------------------------- */
+  --animate-marquee: marquee 46s linear infinite;
+
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+}
+
+/* ==========================================================================
+   Base
+   ========================================================================== */
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--color-surface);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    font-weight: 800;
+    letter-spacing: -0.035em;
+    text-wrap: balance;
+    color: var(--color-heading);
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  ::selection {
+    background-color: var(--color-brand-lime);
+    color: var(--color-night);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-brand-blue);
+    outline-offset: 3px;
+    border-radius: 3px;
+  }
+
+  [id] {
+    scroll-margin-top: 96px;
+  }
+}
+
+/* ==========================================================================
+   Utilidades del sistema
+   ========================================================================== */
+
+/* Etiqueta de sección */
+@utility eyebrow {
+  font-size: 0.6875rem;
+  line-height: 1;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+/* Número/dato grande */
+@utility stat-figure {
+  font-family: var(--font-display);
+  font-weight: 800;
+  letter-spacing: -0.05em;
+  font-variant-numeric: tabular-nums;
+}
+
+/* --- Texturas de imprenta ------------------------------------------- */
+
+/* Trama de semitono. La variante se elige según el fondo de la sección. */
+@utility halftone {
+  background-image: radial-gradient(var(--color-line-strong) 1.2px, transparent 1.2px);
+  background-size: 11px 11px;
+}
+
+@utility halftone-dark {
+  background-image: radial-gradient(rgb(255 255 255 / 0.16) 1.2px, transparent 1.2px);
+  background-size: 11px 11px;
+}
+
+@utility halftone-lime {
+  background-image: radial-gradient(rgb(16 17 23 / 0.16) 1.2px, transparent 1.2px);
+  background-size: 11px 11px;
+}
+
+/* Retícula de líneas finas */
+@utility grid-lines {
+  background-image:
+    linear-gradient(to right, var(--color-line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--color-line) 1px, transparent 1px);
+  background-size: 64px 64px;
+}
+
+/* Trama diagonal para placeholders de imagen */
+@utility hatch {
+  background-image: repeating-linear-gradient(
+    -45deg,
+    var(--color-line) 0px,
+    var(--color-line) 1px,
+    transparent 1px,
+    transparent 9px
+  );
+}
+
+/* --- Tipografía calada ------------------------------------------------ */
+
+@utility text-stroke-ink {
+  color: transparent;
+  -webkit-text-stroke: 2px var(--color-night);
+}
+
+@utility text-stroke-lime {
+  color: transparent;
+  -webkit-text-stroke: 2px var(--color-brand-lime);
+}
+
+@utility text-stroke-white {
+  color: transparent;
+  -webkit-text-stroke: 2px rgb(255 255 255 / 0.45);
+}
+
+/* --- Varios ----------------------------------------------------------- */
+
+@utility mask-fade-x {
+  mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+}
+
+@utility text-balance-none {
+  text-wrap: initial;
+}
+
+/* ==========================================================================
+   Accesibilidad — movimiento reducido
+   ========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  /* Sin animación la cinta quedaría congelada en el primer logo:
+     se vuelve desplazable manualmente. */
+  [data-marquee] {
+    overflow-x: auto;
+  }
+}
