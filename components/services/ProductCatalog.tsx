@@ -47,7 +47,7 @@ export function ProductCatalog({
 
   if (products.length === 0) {
     return (
-      <p className="rounded-card border border-dashed border-line bg-surface-2 p-10 text-center text-[15px] text-ink-2">
+      <p className="rounded-card border border-dashed border-line bg-neutral-50 p-10 text-center text-[15px] text-ink-2">
         Estamos preparando el catálogo de esta línea. Escríbenos y te enviamos las opciones
         disponibles.
       </p>

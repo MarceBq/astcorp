@@ -5,8 +5,7 @@ import { services } from "@/data/services";
 
 export default function NotFound() {
   return (
-    <div className="relative overflow-hidden border-b border-line bg-surface-2">
-      <div className="pointer-events-none absolute inset-0 grid-lines opacity-40" aria-hidden="true" />
+    <div className="relative overflow-hidden border-b border-line bg-neutral-50">
 
       <Container width="wide" className="relative">
         <div className="flex min-h-[70vh] flex-col justify-center py-32">
@@ -14,7 +13,7 @@ export default function NotFound() {
             404
           </span>
 
-          <h1 className="mt-6 max-w-2xl text-[clamp(1.75rem,3.4vw,2.75rem)] font-semibold leading-[1.08] text-heading">
+          <h1 className="mt-6 max-w-2xl text-[clamp(1.75rem,3.4vw,2.75rem)] font-semibold leading-[1.08] text-ink">
             No encontramos la página que buscas.
           </h1>
 

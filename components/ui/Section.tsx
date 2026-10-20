@@ -2,38 +2,43 @@ import { cn } from "@/lib/utils";
 import { Container } from "./Container";
 
 interface SectionProps extends React.HTMLAttributes<HTMLElement> {
-  tone?: "white" | "muted" | "soft" | "blue" | "blueDeep" | "lime";
-  size?: "sm" | "md" | "lg";
+  tone?: "plain" | "tint" | "blue";
+  size?: "md" | "sm";
   width?: "default" | "wide" | "narrow";
   /** Desactiva el Container para secciones que gestionan su propio ancho. */
   bleed?: boolean;
 }
 
 /**
- * Fondos de sección: solo papel.
+ * Fondos de sección. Solo tres, y dos de ellos son prácticamente blanco:
+ * la continuidad de la página depende de no cambiar de superficie a cada paso.
  *
- * El negro queda excluido como superficie a propósito — es tinta, no soporte.
- * Los fondos son blanco, tonos claros, el azul de marca y el verde lima.
+ * `tint` no es un bloque de color plano sino un degradado que nace y muere en
+ * blanco, de modo que no deja cantos visibles contra las secciones vecinas.
+ * El azul se reserva al cierre y al footer.
  */
 const tones = {
-  white: "bg-surface text-ink",
-  muted: "bg-surface-2 text-ink",
-  soft: "bg-surface-3 text-ink",
+  plain: "bg-white",
+  tint: "bg-gradient-to-b from-white via-neutral-50 to-white",
   blue: "bg-brand-blue text-white",
-  blueDeep: "bg-brand-blue-ink text-white",
-  lime: "bg-brand-lime text-ink-key",
 };
 
+/** Un único ritmo vertical para todo el sitio. */
 const paddings = {
+  md: "py-20 sm:py-24 lg:py-28",
   sm: "py-14 sm:py-16",
-  md: "py-16 sm:py-20 lg:py-24",
-  lg: "py-20 sm:py-28 lg:py-32",
 };
+
+const widths = {
+  narrow: "narrow",
+  default: "default",
+  wide: "wide",
+} as const;
 
 export function Section({
-  tone = "white",
+  tone = "plain",
   size = "md",
-  width = "default",
+  width = "wide",
   bleed = false,
   className,
   children,
@@ -41,7 +46,7 @@ export function Section({
 }: SectionProps) {
   return (
     <section className={cn(tones[tone], paddings[size], className)} {...props}>
-      {bleed ? children : <Container width={width}>{children}</Container>}
+      {bleed ? children : <Container width={widths[width]}>{children}</Container>}
     </section>
   );
 }

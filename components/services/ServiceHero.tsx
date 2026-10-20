@@ -3,7 +3,6 @@ import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
 import { Reveal } from "@/components/ui/Reveal";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
-import { AccentTitle } from "@/components/ui/AccentTitle";
 import { ServiceIcon } from "@/components/ui/Icons";
 import type { Service } from "@/data/types";
 
@@ -20,14 +19,9 @@ export function ServiceHero({
   productCount: number;
 }) {
   return (
-    <div className="relative overflow-hidden border-b border-line bg-surface-2">
-      <div className="pointer-events-none absolute inset-0 grid-lines opacity-40" aria-hidden="true" />
-      <div
-        className="pointer-events-none absolute -right-24 -top-32 size-[420px] rounded-full bg-brand-blue-soft opacity-60 blur-[120px]"
-        aria-hidden="true"
-      />
+    <div className="bg-gradient-to-b from-neutral-50 to-white">
 
-      <Container width="wide" className="relative">
+      <Container width="wide">
         <div className="pb-14 pt-[124px] sm:pb-16 sm:pt-[140px] lg:pb-20 lg:pt-[168px]">
           <Breadcrumbs
             className="mb-8"
@@ -42,19 +36,16 @@ export function ServiceHero({
             <Reveal className="max-w-3xl">
               {/* Línea de cabecera: predomina el azul, con remate lime */}
               <div className="mb-6 flex items-center gap-3">
-                <span className="inline-flex size-11 items-center justify-center rounded-[10px] bg-brand-blue text-white">
-                  <ServiceIcon name={service.icon} className="size-6" />
+                <span className="inline-flex size-11 items-center justify-center rounded-[12px] bg-brand-lime-50 text-brand-blue">
+                  <ServiceIcon name={service.icon} className="size-6" strokeWidth={1.75} />
                 </span>
-                <span className="h-[3px] w-9 rounded-full bg-brand-blue" aria-hidden="true" />
-                <span className="h-[3px] w-2 rounded-full bg-brand-lime" aria-hidden="true" />
+                <span className="h-[3px] w-7 rounded-full bg-brand-lime" aria-hidden="true" />
                 <span className="eyebrow text-brand-blue">Servicio</span>
               </div>
 
-              <AccentTitle
-                text={service.title}
-                accent={service.titleAccent}
-                className="text-[clamp(2.1rem,4.6vw,3.6rem)] font-semibold leading-[1.05]"
-              />
+              <h1 className="text-[clamp(2.1rem,4.4vw,3.4rem)] font-bold leading-[1.06] text-ink">
+                {service.title}
+              </h1>
 
               <p className="mt-6 max-w-2xl text-[17px] leading-relaxed text-ink-2">
                 {service.intro}

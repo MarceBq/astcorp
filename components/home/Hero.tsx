@@ -5,8 +5,6 @@ import { motion, useReducedMotion } from "framer-motion";
 import { ArrowRight, ChevronDown } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
-import { MisregisterTitle } from "@/components/ui/MisregisterTitle";
-import { CmykBar, CmykRule, RegistrationMark, SheetNote } from "@/components/ui/PrintMarks";
 import { heroMedia } from "@/data/hero";
 import { cn } from "@/lib/utils";
 
@@ -29,7 +27,7 @@ export function Hero() {
 
   return (
     <section
-      className="relative flex min-h-[620px] h-[100svh] w-full items-end overflow-hidden bg-brand-blue-ink"
+      className="relative flex min-h-[620px] h-[100svh] w-full items-end overflow-hidden bg-brand-blue-900"
       aria-label="Presentación de ASTCORP"
     >
       {/* --------------------------------------------------------------
@@ -38,7 +36,6 @@ export function Hero() {
           de modo que el hero nunca aparece vacío ni roto.
       --------------------------------------------------------------- */}
       <div className="absolute inset-0 bg-[radial-gradient(120%_120%_at_15%_10%,#2F2FA8_0%,#1B1B63_45%,#0E0F1F_100%)]" />
-      <div className="absolute inset-0 grid-lines opacity-[0.07]" aria-hidden="true" />
       <div
         className="absolute -left-40 top-1/4 size-[560px] rounded-full bg-brand-lime/20 blur-[160px]"
         aria-hidden="true"
@@ -96,27 +93,6 @@ export function Hero() {
         aria-hidden="true"
       />
 
-      {/* --------------------------------------------------------------
-          Capa 4 — Marcas de pliego sobre el video.
-          Marcas de registro en las esquinas, tira de control a sangre y la
-          anotación al margen. No alteran la estructura del hero.
-      --------------------------------------------------------------- */}
-      <RegistrationMark
-        size={30}
-        tone="light"
-        className="absolute left-5 top-24 z-10 opacity-70 lg:left-8 lg:top-28"
-      />
-      <RegistrationMark
-        size={30}
-        tone="light"
-        className="absolute right-5 top-24 z-10 opacity-70 lg:right-8 lg:top-28"
-      />
-      {/* Oculta bajo sm: ahí chocaría con el indicador de scroll */}
-      <SheetNote tone="light" className="absolute right-5 bottom-6 z-10 hidden sm:inline-flex lg:right-8">
-        ASTCORP — Pliego 01
-      </SheetNote>
-      <CmykRule className="absolute inset-x-0 bottom-0 z-10" />
-
       {/* -------------------------------------------------------------- */}
       <Container width="wide" className="relative z-10 pb-16 pt-32 sm:pb-20">
         <motion.div
@@ -125,52 +101,43 @@ export function Hero() {
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 0.15 }}
           className="max-w-[54rem]"
         >
-          <div className="flex items-center gap-3">
-            <CmykBar size="md" />
-            <span className="font-display text-[14px] font-extrabold uppercase tracking-[0.26em] text-white">
+          <div className="flex items-center gap-2.5">
+            <span className="size-[7px] rounded-[2px] bg-brand-lime" aria-hidden="true" />
+            <span className="font-display text-[14px] font-bold uppercase tracking-[0.24em] text-white">
               ASTCORP
             </span>
           </div>
 
-          {/* Titular fuera de registro: las planchas CMY se separan al cargar.
-              Sobre el video se suman en pantalla (multiplicar las apagaría).
-              El fragmento clave va entintado en lima con texto K. */}
-          <MisregisterTitle
-            as="h1"
-            text="Soluciones que imprimen tu marca."
-            tone="light"
-            animate
-            className="mt-7 text-[clamp(2.75rem,7.4vw,6rem)] font-black leading-[0.95] tracking-[-0.045em]"
-          >
+          <h1 className="mt-7 text-[clamp(2.5rem,6.6vw,5.25rem)] font-bold leading-[1.02] tracking-[-0.035em] text-white">
             Soluciones que{" "}
             <span className="relative inline-block">
-              <span className="relative z-10 text-ink-key">imprimen</span>
+              <span className="relative z-10 text-ink">imprimen</span>
               <span
-                className="absolute -inset-x-[0.1em] -inset-y-[0.03em] z-0 -rotate-[0.8deg] bg-brand-lime"
+                className="absolute -inset-x-[0.08em] -inset-y-[0.02em] z-0 rounded-[4px] bg-brand-lime"
                 aria-hidden="true"
               />
             </span>{" "}
             tu marca.
-          </MisregisterTitle>
+          </h1>
 
-          <p className="mt-8 flex flex-wrap items-center gap-x-3 gap-y-1 font-display text-[clamp(0.95rem,1.4vw,1.15rem)] font-bold uppercase tracking-[0.14em] text-white/85">
+          <p className="mt-7 flex flex-wrap items-center gap-x-3 gap-y-1 text-[clamp(0.95rem,1.4vw,1.15rem)] font-medium tracking-[0.02em] text-white/85">
             <span>Impresión</span>
             <span className="text-brand-lime" aria-hidden="true">
-              /
+              ·
             </span>
             <span>Visual</span>
             <span className="text-brand-lime" aria-hidden="true">
-              /
+              ·
             </span>
             <span>Merch</span>
             <span className="text-brand-lime" aria-hidden="true">
-              /
+              ·
             </span>
             <span>Corporativo</span>
           </p>
 
           <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:items-center">
-            <Button href="/contacto" size="lg" variant="accent" borderless className="group">
+            <Button href="/contacto" size="lg" variant="accent" className="group">
               Solicitar cotización
               <ArrowRight
                 className="size-[18px] transition-transform duration-300 group-hover:translate-x-1"
@@ -194,7 +161,7 @@ export function Hero() {
         aria-label="Continuar al contenido"
         className="absolute inset-x-0 bottom-5 z-10 mx-auto flex w-fit flex-col items-center gap-1.5 text-white/60 transition-colors hover:text-white"
       >
-        <span className="font-display text-[10.5px] font-bold uppercase tracking-[0.2em]">Scroll</span>
+        <span className="text-[10.5px] font-semibold uppercase tracking-[0.2em]">Scroll</span>
         <ChevronDown className="size-[18px] animate-bounce" strokeWidth={1.75} aria-hidden="true" />
       </motion.a>
     </section>

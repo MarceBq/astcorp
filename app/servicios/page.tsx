@@ -44,11 +44,11 @@ export default function ServicesPage() {
         }
       />
 
-      <Section tone="white" size="lg" width="wide">
+      <Section tone="plain" size="md" width="wide">
         <RevealGroup gap={0.07} className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {services.map((service, index) => (
             <RevealItem key={service.slug} className="h-full">
-              <ServiceCard service={service} index={index} />
+              <ServiceCard service={service} />
             </RevealItem>
           ))}
         </RevealGroup>

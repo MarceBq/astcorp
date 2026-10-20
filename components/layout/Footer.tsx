@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { MapPin, Phone, Mail, MessageCircle } from "lucide-react";
 import { Container } from "@/components/ui/Container";
-import { CmykRule, RegistrationMark, SheetNote } from "@/components/ui/PrintMarks";
 import { Logo } from "@/components/ui/Logo";
 import { footerNav } from "@/data/navigation";
 import { company } from "@/data/company";
@@ -27,26 +26,13 @@ export function Footer() {
   ].filter((social): social is { label: string; href: string } => Boolean(social.href));
 
   return (
-    <footer className="relative overflow-hidden bg-brand-blue-ink text-white">
-      {/* Tira de control de color: cierra el pliego */}
-      <CmykRule className="absolute inset-x-0 top-0 z-10 h-[6px]" />
-
-      <div
-        className="pointer-events-none absolute inset-0 halftone-bg halftone-fade-b text-white/15"
-        aria-hidden="true"
-      />
-      <RegistrationMark
-        size={26}
-        tone="light"
-        className="absolute right-6 top-10 opacity-50 lg:right-10"
-      />
+    <footer className="relative overflow-hidden bg-brand-blue-900 text-white">
 
       {/* Degradado corporativo y texturas */}
       <div
         className="pointer-events-none absolute inset-0 bg-[radial-gradient(110%_120%_at_85%_0%,#2F2FA8_0%,#22226F_45%,#161645_100%)]"
         aria-hidden="true"
       />
-      <div className="pointer-events-none absolute inset-0 grid-lines opacity-[0.07]" aria-hidden="true" />
       <div
         className="pointer-events-none absolute -bottom-40 -left-24 size-[460px] rounded-full bg-brand-lime/15 blur-[150px]"
         aria-hidden="true"
@@ -71,7 +57,7 @@ export function Footer() {
                         href={social.href}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex rounded-[8px] border border-white/20 bg-white/[0.06] px-3 py-2 text-[13px] text-white/75 transition-colors hover:border-brand-lime hover:bg-brand-lime hover:text-brand-blue-ink"
+                        className="inline-flex rounded-[8px] border border-white/20 bg-white/[0.06] px-3 py-2 text-[13px] text-white/75 transition-colors hover:border-brand-lime hover:bg-brand-lime hover:text-brand-blue-900"
                       >
                         {social.label}
                       </a>
@@ -183,9 +169,9 @@ export function Footer() {
             &copy; {year} <span className="text-white/85">{company.name}</span>. Todos los derechos
             reservados.
           </p>
-          <SheetNote tone="light" withInks>
-            Astcorp — Pliego final · {company.address.city}
-          </SheetNote>
+          <p>
+            Fundada el {company.foundedLabel} &middot; {company.address.city}, {company.address.country}
+          </p>
         </div>
       </Container>
     </footer>

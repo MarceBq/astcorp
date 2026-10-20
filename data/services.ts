@@ -12,7 +12,6 @@ export const services: Service[] = [
     slug: "offset",
     name: "Offset",
     title: "Impresión Offset",
-    titleAccent: "Offset",
     short: "Impresión comercial y corporativa.",
     description:
       "Impresión offset de alta calidad para empaques premium, bolsas personalizadas y material editorial.",
@@ -48,7 +47,6 @@ export const services: Service[] = [
     slug: "visual",
     name: "Visual",
     title: "Comunicación y Publicidad Visual",
-    titleAccent: "Publicidad Visual",
     short: "Soluciones de comunicación y publicidad visual.",
     description:
       "Desarrollo de ambientes y elementos visuales que potencian marcas y posicionan productos.",
@@ -85,7 +83,6 @@ export const services: Service[] = [
     slug: "merch",
     name: "Merch",
     title: "Merchandising Corporativo",
-    titleAccent: "Corporativo",
     short: "Productos promocionales personalizados.",
     description:
       "Soluciones de merchandising personalizadas para potenciar campañas y generar impacto memorable.",
@@ -126,7 +123,6 @@ export const services: Service[] = [
     slug: "box-corporativos",
     name: "Box Corporativos",
     title: "Box Corporativos",
-    titleAccent: "Corporativos",
     short: "Kits y experiencias corporativas personalizadas.",
     description:
       "Regalos empresariales y experiencias para premiar, reconocer y fidelizar clientes y colaboradores.",
@@ -172,7 +168,6 @@ export const services: Service[] = [
     slug: "branding",
     name: "Branding",
     title: "Branding y Diseño de Marca",
-    titleAccent: "Diseño de Marca",
     short: "Identidad visual y aplicación de marca.",
     description:
       "Desarrollo de identidad visual y su aplicación coherente en cada pieza que produce la marca.",
@@ -209,7 +204,6 @@ export const services: Service[] = [
     slug: "proyectos-inmobiliarios",
     name: "Proyectos inmobiliarios",
     title: "Proyectos Inmobiliarios",
-    titleAccent: "Inmobiliarios",
     short: "Material gráfico para la venta de proyectos.",
     description:
       "Gráfica, señalización y material de venta para proyectos inmobiliarios, de la sala de ventas a la entrega.",

@@ -5,7 +5,6 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
 import { ChevronDown, Menu } from "lucide-react";
-import { CmykRule } from "@/components/ui/PrintMarks";
 import { Container } from "@/components/ui/Container";
 import { Logo } from "@/components/ui/Logo";
 import { Button } from "@/components/ui/Button";
@@ -54,8 +53,6 @@ export function Navbar() {
             : "bg-brand-lime shadow-[0_1px_16px_-8px_rgba(16,17,23,0.35)]",
         )}
       >
-        {/* Tira de control de color al pie del header, como en todo pliego */}
-        <CmykRule className="absolute inset-x-0 bottom-0 h-[4px]" />
         <Container width="wide">
           <div className="flex h-[68px] items-center justify-between gap-6 lg:h-[76px]">
             <Logo tone={transparent ? "light" : "onLime"} />
@@ -80,7 +77,6 @@ export function Navbar() {
                 href="/contacto"
                 size="sm"
                 variant={transparent ? "accent" : "primary"}
-                borderless
                 className="hidden font-semibold tracking-[-0.005em] sm:inline-flex"
               >
                 Cotizar proyecto
@@ -95,7 +91,7 @@ export function Navbar() {
                   "inline-flex size-10 items-center justify-center rounded-[10px] border-2 transition-colors lg:hidden",
                   transparent
                     ? "border-white/40 text-white hover:bg-white/10"
-                    : "border-brand-blue-ink/25 text-brand-blue-ink hover:bg-brand-blue-ink/10",
+                    : "border-brand-blue-900/25 text-brand-blue-900 hover:bg-brand-blue-900/10",
                 )}
               >
                 <Menu className="size-6" strokeWidth={2.5} />
@@ -136,8 +132,8 @@ function NavEntry({
           transparent
             ? "text-white/90 hover:text-white"
             : active
-              ? "text-brand-blue-deep"
-              : "text-brand-blue-ink hover:text-brand-blue-deep",
+              ? "text-brand-blue-700"
+              : "text-brand-blue-900 hover:text-brand-blue-700",
         )}
       >
         {item.label}
@@ -153,7 +149,7 @@ function NavEntry({
       {/* Marcador de sección activa */}
       {active && !transparent && (
         <span
-          className="absolute inset-x-3.5 -bottom-0.5 h-[3px] rounded-full bg-brand-blue-deep"
+          className="absolute inset-x-3.5 -bottom-0.5 h-[3px] rounded-full bg-brand-blue-700"
           aria-hidden="true"
         />
       )}
@@ -167,13 +163,13 @@ function NavEntry({
             transition={{ duration: 0.18, ease: [0.22, 1, 0.36, 1] }}
             className={cn("absolute left-0 top-full pt-3", wide ? "w-[520px]" : "w-[280px]")}
           >
-            <div className="overflow-hidden rounded-card border border-line bg-white shadow-lift">
+            <div className="overflow-hidden rounded-card border border-line bg-white shadow-card-hover">
               <ul className={cn("p-2", wide && "grid grid-cols-2 gap-1")}>
                 {item.children!.map((child) => (
                   <li key={child.href}>
                     <Link
                       href={child.href}
-                      className="group block rounded-[10px] px-3.5 py-3 transition-colors hover:bg-surface-2"
+                      className="group block rounded-[10px] px-3.5 py-3 transition-colors hover:bg-neutral-50"
                     >
                       <span className="flex items-center justify-between gap-3 text-[15px] font-semibold text-ink">
                         {child.label}
@@ -192,7 +188,7 @@ function NavEntry({
               {item.overview && (
                 <Link
                   href={item.overview.href}
-                  className="flex items-center justify-between border-t border-line bg-surface-2 px-5 py-3 text-[13.5px] font-semibold text-brand-blue transition-colors hover:bg-brand-blue-pale"
+                  className="flex items-center justify-between border-t border-line bg-neutral-50 px-5 py-3 text-[13.5px] font-semibold text-brand-blue transition-colors hover:bg-brand-blue-50"
                 >
                   {item.overview.label}
                   <span aria-hidden="true">&rarr;</span>

@@ -1,29 +1,24 @@
 import { cn } from "@/lib/utils";
 import { Reveal } from "./Reveal";
-import { CmykBar, RegistrationMark } from "./PrintMarks";
-import { MisregisterTitle } from "./MisregisterTitle";
 
 interface SectionHeadingProps {
   eyebrow?: string;
   title: string;
-  /** Fragmento de `title` a entintar. Debe aparecer literalmente en él. */
+  /** Fragmento de `title` que se destaca en azul. Debe aparecer en él. */
   accent?: string;
   description?: React.ReactNode;
   align?: "left" | "center";
-  /** `dark` para fondos azules; `lime` para el bloque de acento. */
-  tone?: "light" | "dark" | "lime";
+  tone?: "light" | "dark";
   action?: React.ReactNode;
   as?: "h2" | "h1" | "h3";
   className?: string;
 }
 
 /**
- * Encabezado de sección, común a todo el sitio.
+ * Encabezado de sección, idéntico en todo el sitio.
  *
- * Tres recursos de imprenta: marca de registro + tira de control CMYK en la
- * etiqueta, titular fuera de registro, y la palabra clave entintada sobre un
- * parche de amarillo (K sobre amarillo = 16:1, el resaltado más legible de
- * toda la paleta).
+ * Una sola escala tipográfica y un solo recurso de énfasis: la palabra clave
+ * en azul. Es lo que mantiene el mismo tono de una sección a otra.
  */
 export function SectionHeading({
   eyebrow,
@@ -33,25 +28,19 @@ export function SectionHeading({
   align = "left",
   tone = "light",
   action,
-  as = "h2",
+  as: Tag = "h2",
   className,
 }: SectionHeadingProps) {
   const dark = tone === "dark";
   const index = accent ? title.indexOf(accent) : -1;
 
-  const visible =
+  const heading =
     index === -1 || !accent ? (
       title
     ) : (
       <>
         {title.slice(0, index)}
-        <span className="relative inline-block">
-          <span className="relative z-10 text-ink-key">{accent}</span>
-          <span
-            className="absolute -inset-x-[0.1em] -inset-y-[0.02em] z-0 -rotate-[0.6deg] bg-ink-yellow"
-            aria-hidden="true"
-          />
-        </span>
+        <span className={dark ? "text-brand-lime" : "text-brand-blue"}>{accent}</span>
         {title.slice(index + accent.length)}
       </>
     );
@@ -64,7 +53,7 @@ export function SectionHeading({
         className,
       )}
     >
-      <Reveal className={cn("max-w-3xl", align === "center" && "mx-auto text-center")}>
+      <Reveal className={cn("max-w-2xl", align === "center" && "mx-auto text-center")}>
         {eyebrow && (
           <div
             className={cn(
@@ -72,30 +61,29 @@ export function SectionHeading({
               align === "center" && "justify-center",
             )}
           >
-            <RegistrationMark size={20} tone={dark ? "light" : "ink"} />
-            <CmykBar size="sm" />
-            <span className={cn("eyebrow", dark ? "text-white" : "text-ink-key")}>{eyebrow}</span>
+            <span className="h-[3px] w-7 rounded-full bg-brand-lime" aria-hidden="true" />
+            <span className={cn("eyebrow", dark ? "text-brand-lime" : "text-brand-blue")}>
+              {eyebrow}
+            </span>
           </div>
         )}
 
-        <MisregisterTitle
-          as={as}
-          text={title}
-          tone={dark ? "light" : "ink"}
+        <Tag
           className={cn(
-            "font-extrabold",
-            as === "h1"
-              ? "text-[clamp(2.4rem,5.6vw,4.5rem)] leading-[0.98]"
-              : "text-[clamp(2rem,4.2vw,3.25rem)] leading-[1.02]",
+            "font-bold",
+            Tag === "h1"
+              ? "text-[clamp(2.1rem,4.4vw,3.4rem)] leading-[1.06]"
+              : "text-[clamp(1.75rem,3.2vw,2.6rem)] leading-[1.12]",
+            dark ? "text-white" : "text-ink",
           )}
         >
-          {visible}
-        </MisregisterTitle>
+          {heading}
+        </Tag>
 
         {description && (
           <p
             className={cn(
-              "mt-6 text-[17px] leading-relaxed",
+              "mt-5 text-[17px] leading-relaxed",
               dark ? "text-white/80" : "text-ink-2",
             )}
           >
@@ -105,7 +93,7 @@ export function SectionHeading({
       </Reveal>
 
       {action && (
-        <Reveal delay={0.1} className="shrink-0">
+        <Reveal delay={0.08} className="shrink-0">
           {action}
         </Reveal>
       )}

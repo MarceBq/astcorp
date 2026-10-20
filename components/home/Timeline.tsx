@@ -15,7 +15,7 @@ export function Timeline({ className }: { className?: string }) {
           <span className="h-px w-6 bg-brand-blue" aria-hidden="true" />
           <span className="eyebrow text-brand-blue">Trayectoria</span>
         </div>
-        <h3 className="max-w-xl text-[clamp(1.5rem,2.6vw,2.1rem)] font-semibold leading-[1.12] text-heading">
+        <h3 className="max-w-xl text-[clamp(1.5rem,2.6vw,2.1rem)] font-semibold leading-[1.12] text-ink">
           Una empresa que creció junto con sus clientes.
         </h3>
       </Reveal>
@@ -30,7 +30,7 @@ export function Timeline({ className }: { className?: string }) {
             {/* Marcador sobre la línea superior */}
             <span
               className={cn(
-                "absolute -top-[42px] left-0 size-2.5 rounded-full ring-4 ring-surface-2",
+                "absolute -top-[42px] left-0 size-2.5 rounded-full ring-4 ring-neutral-50",
                 entry.confirmed ? "bg-brand-blue" : "bg-line-strong",
               )}
               aria-hidden="true"

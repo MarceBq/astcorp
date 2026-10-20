@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Inter, Archivo, Instrument_Serif } from "next/font/google";
+import { Inter, Archivo } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
@@ -19,14 +19,6 @@ const archivo = Archivo({
   subsets: ["latin"],
   variable: "--font-archivo",
   display: "swap",
-});
-
-const instrument = Instrument_Serif({
-  subsets: ["latin"],
-  variable: "--font-instrument",
-  display: "swap",
-  weight: "400",
-  style: ["normal", "italic"],
 });
 
 export const metadata: Metadata = {
@@ -102,7 +94,17 @@ const organizationSchema = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="es-PE" className={`${inter.variable} ${archivo.variable} ${instrument.variable}`}>
+    /**
+     * `suppressHydrationWarning` solo cubre los atributos de <html>.
+     * Extensiones como Dark Reader inyectan ahí atributos propios antes de
+     * que React hidrate, y eso rompía la hidratación de toda la página. No
+     * oculta discrepancias reales del árbol: el alcance es este único nodo.
+     */
+    <html
+      lang="es-PE"
+      className={`${inter.variable} ${archivo.variable}`}
+      suppressHydrationWarning
+    >
       <body className="min-h-screen antialiased">
         <a
           href="#contenido"

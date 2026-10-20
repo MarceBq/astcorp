@@ -20,17 +20,16 @@ export function CTABand({
   primaryHref?: string;
 }) {
   return (
-    <section className="relative overflow-hidden border-t border-line bg-surface-2 py-16 sm:py-20">
-      <div className="pointer-events-none absolute inset-0 grid-lines opacity-40" aria-hidden="true" />
+    <section className="relative overflow-hidden border-t border-line bg-neutral-50 py-16 sm:py-20">
       <div
-        className="pointer-events-none absolute -right-24 top-0 size-[380px] rounded-full bg-brand-lime-soft blur-[130px] opacity-70"
+        className="pointer-events-none absolute -right-24 top-0 size-[380px] rounded-full bg-brand-lime-50 blur-[130px] opacity-70"
         aria-hidden="true"
       />
 
       <Container width="wide" className="relative">
         <Reveal className="flex flex-col gap-8 lg:flex-row lg:items-center lg:justify-between lg:gap-16">
           <div className="max-w-2xl">
-            <h2 className="text-[clamp(1.6rem,3vw,2.4rem)] font-semibold leading-[1.1] text-heading">
+            <h2 className="text-[clamp(1.6rem,3vw,2.4rem)] font-semibold leading-[1.1] text-ink">
               {title}
             </h2>
             <p className="mt-4 text-[16px] leading-relaxed text-ink-2">{description}</p>

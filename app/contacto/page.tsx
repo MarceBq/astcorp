@@ -31,14 +31,14 @@ export default function ContactPage() {
         breadcrumbs={[{ label: "Inicio", href: "/" }, { label: "Contacto" }]}
       />
 
-      <Section tone="white" size="lg" width="wide">
+      <Section tone="plain" size="md" width="wide">
         <div className="grid gap-10 lg:grid-cols-[1.5fr_1fr] lg:gap-16">
           <Reveal>
             {/* El formulario lee la precarga de ?servicio= y ?producto=,
                 por eso necesita un límite de Suspense. */}
             <Suspense
               fallback={
-                <div className="h-[560px] animate-pulse rounded-card border border-line bg-surface-2" />
+                <div className="h-[560px] animate-pulse rounded-card border border-line bg-neutral-50" />
               }
             >
               <ContactForm />
@@ -92,7 +92,7 @@ export default function ContactPage() {
               </p>
             </InfoCard>
 
-            <div className="rounded-card border border-line bg-surface-2 p-6">
+            <div className="rounded-card border border-line bg-neutral-50 p-6">
               <h2 className="eyebrow text-ink-3">Para agilizar tu cotización</h2>
               <ul className="mt-4 space-y-2.5 text-[14.5px] leading-relaxed text-ink-2">
                 <li>Cantidad estimada y fecha de entrega requerida</li>
@@ -120,7 +120,7 @@ function InfoCard({
   return (
     <div className="rounded-card border border-line bg-white p-6">
       <div className="flex items-center gap-3">
-        <span className="inline-flex size-9 items-center justify-center rounded-[8px] bg-brand-blue-pale text-brand-blue">
+        <span className="inline-flex size-9 items-center justify-center rounded-[8px] bg-brand-blue-50 text-brand-blue">
           {icon}
         </span>
         <h2 className="text-[15px] font-semibold tracking-[-0.015em] text-ink">{title}</h2>

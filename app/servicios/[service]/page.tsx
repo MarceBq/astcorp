@@ -52,7 +52,7 @@ export default async function ServicePage({ params }: Params) {
       <ServiceHero service={service} productCount={items.length} />
 
       {/* Descripción del servicio */}
-      <Section tone="white" size="lg" width="wide">
+      <Section tone="plain" size="md" width="wide">
         <div className="grid gap-12 lg:grid-cols-[1fr_1.05fr] lg:gap-20">
           <Reveal>
             <div className="mb-4 flex items-center gap-2.5">
@@ -60,7 +60,7 @@ export default async function ServicePage({ params }: Params) {
               <span className="eyebrow text-brand-blue">El servicio</span>
             </div>
 
-            <h2 className="text-[clamp(1.6rem,2.8vw,2.25rem)] font-semibold leading-[1.1] text-heading">
+            <h2 className="text-[clamp(1.6rem,2.8vw,2.25rem)] font-semibold leading-[1.1] text-ink">
               {service.description}
             </h2>
 
@@ -72,7 +72,7 @@ export default async function ServicePage({ params }: Params) {
                 {service.subcategories.map((sub) => (
                   <li
                     key={sub.slug}
-                    className="rounded-[8px] border border-line bg-surface-2 px-3 py-1.5 text-[13.5px] text-ink-2"
+                    className="rounded-[8px] border border-line bg-neutral-50 px-3 py-1.5 text-[13.5px] text-ink-2"
                   >
                     {sub.name}
                   </li>
@@ -94,7 +94,7 @@ export default async function ServicePage({ params }: Params) {
       </Section>
 
       {/* Beneficios */}
-      <Section tone="muted" size="lg" width="wide">
+      <Section tone="tint" size="md" width="wide">
         <SectionHeading eyebrow="Beneficios" title={`Por qué producir tu ${service.name.toLowerCase()} con ASTCORP.`} />
 
         <RevealGroup
@@ -114,7 +114,7 @@ export default async function ServicePage({ params }: Params) {
       </Section>
 
       {/* Catálogo */}
-      <Section id="catalogo" tone="white" size="lg" width="wide">
+      <Section id="catalogo" tone="plain" size="md" width="wide">
         <SectionHeading
           eyebrow="Catálogo"
           title={`Catálogo de ${service.name}`}
@@ -127,14 +127,14 @@ export default async function ServicePage({ params }: Params) {
       </Section>
 
       {/* Otros servicios */}
-      <Section tone="muted" size="sm" width="wide">
+      <Section tone="tint" size="sm" width="wide">
         <h2 className="eyebrow text-ink-3">Otros servicios</h2>
         <div className="mt-6 grid gap-px overflow-hidden rounded-card bg-line sm:grid-cols-3">
           {others.map((other) => (
             <Link
               key={other.slug}
               href={`/servicios/${other.slug}`}
-              className="group bg-white p-6 transition-colors hover:bg-surface-2"
+              className="group bg-white p-6 transition-colors hover:bg-neutral-50"
             >
               <span className="text-[17px] font-semibold tracking-[-0.02em] text-ink transition-colors group-hover:text-brand-blue">
                 {other.title}

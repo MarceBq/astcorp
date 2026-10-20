@@ -42,7 +42,7 @@ export function ProductCard({
           imageClassName="group-hover:scale-[1.04]"
         />
 
-        <span className="absolute bottom-3 right-3 inline-flex size-9 items-center justify-center rounded-full bg-white/90 text-ink opacity-0 shadow-soft backdrop-blur transition-all duration-300 group-hover:opacity-100 group-focus-visible:opacity-100">
+        <span className="absolute bottom-3 right-3 inline-flex size-9 items-center justify-center rounded-full bg-white/90 text-ink opacity-0 shadow-card backdrop-blur transition-all duration-300 group-hover:opacity-100 group-focus-visible:opacity-100">
           <Plus className="size-[18px]" strokeWidth={2} aria-hidden="true" />
         </span>
       </div>

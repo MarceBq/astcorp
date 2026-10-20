@@ -108,7 +108,7 @@ export function ContactForm() {
       className="rounded-card border border-line bg-white p-6 sm:p-8 lg:p-10"
     >
       {presetProduct && (
-        <p className="mb-6 rounded-[10px] border border-line bg-brand-blue-pale px-4 py-3 text-[13.5px] leading-relaxed text-ink-2">
+        <p className="mb-6 rounded-[10px] border border-line bg-brand-blue-50 px-4 py-3 text-[13.5px] leading-relaxed text-ink-2">
           Estás cotizando <strong className="font-medium text-ink">{presetProduct}</strong>. Puedes
           editar el mensaje si necesitas algo distinto.
         </p>
@@ -192,7 +192,7 @@ export function ContactForm() {
         <div className="sm:col-span-2">
           <label
             htmlFor="file"
-            className="flex cursor-pointer items-center justify-between gap-4 rounded-[10px] border-2 border-dashed border-brand-blue bg-surface-2 px-4 py-3.5 transition-colors hover:border-brand-blue-deep hover:bg-brand-blue-pale"
+            className="flex cursor-pointer items-center justify-between gap-4 rounded-[10px] border-2 border-dashed border-brand-blue bg-neutral-50 px-4 py-3.5 transition-colors hover:border-brand-blue-700 hover:bg-brand-blue-50"
           >
             <span className="flex min-w-0 items-center gap-2.5 text-[14px] text-ink-2">
               <Paperclip
@@ -221,7 +221,7 @@ export function ContactForm() {
       {status === "error" && (
         <div
           role="alert"
-          className="mt-6 flex items-start gap-3 rounded-[10px] border border-line bg-surface-2 px-4 py-3.5 text-[14px] leading-relaxed text-ink-2"
+          className="mt-6 flex items-start gap-3 rounded-[10px] border border-line bg-neutral-50 px-4 py-3.5 text-[14px] leading-relaxed text-ink-2"
         >
           <AlertCircle
             className="mt-0.5 size-[18px] shrink-0 text-ink-3"
@@ -278,7 +278,7 @@ function inputClass(error?: string) {
     "placeholder:text-ink-3 focus:outline-none focus:ring-2 focus:ring-brand-blue/30",
     error
       ? "border-red-500 focus:border-red-600"
-      : "border-brand-blue focus:border-brand-blue-deep",
+      : "border-brand-blue focus:border-brand-blue-700",
   );
 }
 

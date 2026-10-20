@@ -43,13 +43,13 @@ export function MobileMenu({ open, onClose }: { open: boolean; onClose: () => vo
         >
           {/* La barra superior conserva el lime del navbar para que abrir el
               menú no cambie de color la cabecera. */}
-          <div className="flex h-[68px] shrink-0 items-center justify-between border-b border-brand-blue-ink/15 bg-brand-lime px-5">
+          <div className="flex h-[68px] shrink-0 items-center justify-between border-b border-brand-blue-900/15 bg-brand-lime px-5">
             <Logo tone="onLime" />
             <button
               type="button"
               onClick={onClose}
               aria-label="Cerrar menú"
-              className="inline-flex size-10 items-center justify-center rounded-[10px] border-2 border-brand-blue-ink/25 text-brand-blue-ink transition-colors hover:bg-brand-blue-ink/10"
+              className="inline-flex size-10 items-center justify-center rounded-[10px] border-2 border-brand-blue-900/25 text-brand-blue-900 transition-colors hover:bg-brand-blue-900/10"
             >
               <X className="size-6" strokeWidth={2.5} />
             </button>
@@ -73,7 +73,7 @@ export function MobileMenu({ open, onClose }: { open: boolean; onClose: () => vo
                       <Link
                         href={item.href}
                         onClick={onClose}
-                        className="flex-1 py-3.5 font-display text-[21px] font-semibold tracking-[-0.02em] text-heading"
+                        className="flex-1 py-3.5 font-display text-[21px] font-semibold tracking-[-0.02em] text-ink"
                       >
                         {item.label}
                       </Link>
@@ -126,7 +126,7 @@ export function MobileMenu({ open, onClose }: { open: boolean; onClose: () => vo
             </ul>
           </nav>
 
-          <div className={cn("shrink-0 space-y-4 border-t border-line bg-surface-2 px-5 py-5")}>
+          <div className={cn("shrink-0 space-y-4 border-t border-line bg-neutral-50 px-5 py-5")}>
             <Button href="/contacto" size="lg" className="w-full font-semibold" onClick={onClose}>
               Solicitar cotización
             </Button>

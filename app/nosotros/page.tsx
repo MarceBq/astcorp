@@ -49,7 +49,7 @@ export default function AboutPage() {
       />
 
       {/* Historia */}
-      <Section tone="white" size="lg" width="wide">
+      <Section tone="plain" size="md" width="wide">
         <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
           <Reveal className="lg:col-span-5">
             <Media
@@ -68,7 +68,7 @@ export default function AboutPage() {
                 <span className="eyebrow text-brand-blue">La empresa</span>
               </div>
 
-              <p className="font-editorial text-[clamp(1.35rem,2.3vw,1.85rem)] leading-[1.35] text-ink">
+              <p className="text-[clamp(1.35rem,2.3vw,1.85rem)] leading-[1.35] text-ink">
                 {company.activity}
               </p>
 
@@ -96,13 +96,13 @@ export default function AboutPage() {
       </Section>
 
       {/* Pilares */}
-      <Section tone="muted" size="lg" width="wide" >
+      <Section tone="tint" size="md" width="wide" >
         <Reveal>
           <div className="mb-4 flex items-center gap-2.5">
             <span className="h-px w-6 bg-brand-blue" aria-hidden="true" />
             <span className="eyebrow text-brand-blue">Pilares</span>
           </div>
-          <h2 className="max-w-2xl text-[clamp(1.75rem,3.2vw,2.6rem)] font-semibold leading-[1.08] text-heading">
+          <h2 className="max-w-2xl text-[clamp(1.75rem,3.2vw,2.6rem)] font-semibold leading-[1.08] text-ink">
             Cuatro compromisos que sostienen cada proyecto.
           </h2>
         </Reveal>

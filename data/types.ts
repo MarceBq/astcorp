@@ -30,11 +30,6 @@ export interface Service {
   name: string;
   /** Título completo para encabezados de página. */
   title: string;
-  /**
-   * Fragmento de `title` que se resalta en azul con subrayado lime en el hero
-   * del servicio. Debe aparecer literalmente dentro de `title`.
-   */
-  titleAccent?: string;
   /** Una línea para la card del home. */
   short: string;
   description: string;

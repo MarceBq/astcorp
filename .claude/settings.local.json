@@ -3,7 +3,9 @@
     "allow": [
       "Bash(node -e ' *)",
       "PowerShell(npm run build 2>&1)",
-      "PowerShell(npm run typecheck 2>&1)"
+      "PowerShell(npm run typecheck 2>&1)",
+      "PowerShell(Set-Location \"C:\\\\Users\\\\User\\\\OneDrive\\\\Escritorio\\\\astcorp\"; npm run build 2>&1 | Select-String -Pattern \"error|Error|Failed|Cannot find|not found\" | Select-Object -First 16; \"exit: $LASTEXITCODE\")",
+      "PowerShell(Set-Location \"C:\\\\Users\\\\User\\\\OneDrive\\\\Escritorio\\\\astcorp\"; npm run build 2>&1 | Select-String -Pattern \"error TS|Module not found|Build error|Failed\" | Select-Object -First 14; \"exit: $LASTEXITCODE\")"
     ]
   }
 }

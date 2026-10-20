@@ -62,7 +62,7 @@ export function ProductDialog({
             transition={{ duration: 0.2 }}
             onClick={onClose}
             aria-label="Cerrar ficha de producto"
-            className="absolute inset-0 cursor-default bg-brand-blue-ink/55 backdrop-blur-[2px]"
+            className="absolute inset-0 cursor-default bg-brand-blue-900/55 backdrop-blur-[2px]"
           />
 
           <motion.div
@@ -73,14 +73,14 @@ export function ProductDialog({
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 16 }}
             transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
-            className="relative flex max-h-[92svh] w-full max-w-4xl flex-col overflow-hidden rounded-t-[20px] border border-line bg-white shadow-lift sm:max-h-[86svh] sm:rounded-card"
+            className="relative flex max-h-[92svh] w-full max-w-4xl flex-col overflow-hidden rounded-t-[20px] border border-line bg-white shadow-card-hover sm:max-h-[86svh] sm:rounded-card"
           >
             <button
               ref={closeRef}
               type="button"
               onClick={onClose}
               aria-label="Cerrar"
-              className="absolute right-4 top-4 z-10 inline-flex size-9 items-center justify-center rounded-[9px] border border-line bg-white/90 text-ink backdrop-blur transition-colors hover:bg-surface-2"
+              className="absolute right-4 top-4 z-10 inline-flex size-9 items-center justify-center rounded-[9px] border border-line bg-white/90 text-ink backdrop-blur transition-colors hover:bg-neutral-50"
             >
               <X className="size-[18px]" strokeWidth={2} />
             </button>
@@ -98,7 +98,7 @@ export function ProductDialog({
                 <div className="p-6 sm:p-8">
                   <div className="flex flex-wrap items-center gap-2">
                     {service && (
-                      <span className="rounded-[6px] bg-brand-blue-soft px-2.5 py-1 text-[12px] font-medium text-brand-blue-deep">
+                      <span className="rounded-[6px] bg-brand-blue-100 px-2.5 py-1 text-[12px] font-medium text-brand-blue-700">
                         {service.name}
                       </span>
                     )}
@@ -143,7 +143,7 @@ export function ProductDialog({
                   <div className="mt-6 flex flex-col gap-2.5 sm:flex-row">
                     <Link
                       href={quoteHref}
-                      className="group inline-flex h-11 flex-1 items-center justify-center gap-2 rounded-[10px] border-2 border-brand-blue-deep bg-brand-blue px-5 text-sm font-medium text-white transition-colors hover:bg-brand-blue-deep"
+                      className="group inline-flex h-11 flex-1 items-center justify-center gap-2 rounded-[10px] border-2 border-brand-blue-700 bg-brand-blue px-5 text-sm font-medium text-white transition-colors hover:bg-brand-blue-700"
                     >
                       Solicitar cotización
                       <ArrowRight
@@ -154,7 +154,7 @@ export function ProductDialog({
                     </Link>
                     <a
                       href={`tel:${company.phones[0].tel}`}
-                      className="inline-flex h-11 items-center justify-center gap-2 rounded-[10px] border-2 border-brand-blue/40 px-5 text-sm font-medium text-ink transition-colors hover:border-brand-blue hover:bg-brand-blue-pale"
+                      className="inline-flex h-11 items-center justify-center gap-2 rounded-[10px] border-2 border-brand-blue/40 px-5 text-sm font-medium text-ink transition-colors hover:border-brand-blue hover:bg-brand-blue-50"
                     >
                       <Phone className="size-[18px]" strokeWidth={1.75} aria-hidden="true" />
                       {company.phones[0].display}

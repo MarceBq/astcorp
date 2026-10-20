@@ -21,7 +21,7 @@ export function Logo({
   const wordmark = {
     dark: "text-ink",
     light: "text-white",
-    onLime: "text-brand-blue-ink",
+    onLime: "text-brand-blue-900",
   }[tone];
 
   const dot = tone === "onLime" ? "bg-brand-blue" : "bg-brand-lime";
