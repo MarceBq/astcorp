@@ -19,24 +19,6 @@ export const services: Service[] = [
       "Tiraje corto o volumen alto, con control de color y acabados que sostienen la percepción de una marca premium: desde la papelería que acompaña cada contacto comercial hasta el empaque que llega a la mano del consumidor.",
     icon: "offset",
     cover: null,
-    benefits: [
-      {
-        title: "Control de color",
-        description: "Color reproducible entre tirajes y reimpresiones, bajo manual de marca.",
-      },
-      {
-        title: "Acabados premium",
-        description: "Laminados, barniz UV, relieve y stamping según el nivel de producto.",
-      },
-      {
-        title: "Troqueles a medida",
-        description: "Estructura y resistencia desarrolladas junto con la gráfica del empaque.",
-      },
-      {
-        title: "Volumen sin sobrecosto",
-        description: "El costo por unidad baja al escalar el tiraje.",
-      },
-    ],
     subcategories: [
       { slug: "papeleria", name: "Papelería" },
       { slug: "empaques", name: "Empaques" },
@@ -54,24 +36,6 @@ export const services: Service[] = [
       "Piezas que ocupan espacio físico y compiten por atención: exhibidores, señalética, gráfica de punto de venta e implementaciones que traducen una identidad de marca al mundo real.",
     icon: "visual",
     cover: null,
-    benefits: [
-      {
-        title: "Interior y exterior",
-        description: "Materiales seleccionados según exposición, tránsito e intemperie.",
-      },
-      {
-        title: "Estructura incluida",
-        description: "Soporte, sustrato y gráfica resueltos como un solo entregable.",
-      },
-      {
-        title: "Instalación en sitio",
-        description: "Montaje coordinado en uno o varios locales.",
-      },
-      {
-        title: "Réplica entre sedes",
-        description: "La misma campaña ejecutada igual en cada punto de venta.",
-      },
-    ],
     subcategories: [
       { slug: "publicidad-indoor", name: "Publicidad Indoor" },
       { slug: "publicidad-outdoor", name: "Publicidad Outdoor" },
@@ -90,24 +54,6 @@ export const services: Service[] = [
       "Artículos que la gente conserva y usa. Selección de producto, técnica de personalización y control de tiempos para que la campaña llegue completa y a tiempo.",
     icon: "merch",
     cover: null,
-    benefits: [
-      {
-        title: "Catálogo amplio",
-        description: "Oficina, textil, drinkware, tecnología, ecológicos y artículos de temporada.",
-      },
-      {
-        title: "Personalización a medida",
-        description: "Bordado, serigrafía, grabado láser o impresión según el material.",
-      },
-      {
-        title: "Muestras previas",
-        description: "Aprobación de una muestra física antes de producir en volumen.",
-      },
-      {
-        title: "Entrega por sede",
-        description: "Distribución a una o varias direcciones según lo necesite el equipo.",
-      },
-    ],
     subcategories: [
       { slug: "oficina", name: "Oficina" },
       { slug: "textil", name: "Textil" },
@@ -130,24 +76,6 @@ export const services: Service[] = [
       "Curaduría, empaque y armado de kits corporativos: la caja, el contenido, la impresión y el despacho gestionados como un solo proyecto.",
     icon: "box",
     cover: null,
-    benefits: [
-      {
-        title: "Curaduría del contenido",
-        description: "Selección de artículos ajustada al presupuesto y a la ocasión.",
-      },
-      {
-        title: "Empaque personalizado",
-        description: "Caja, tarjeta y material impreso diseñados para la campaña.",
-      },
-      {
-        title: "Armado unitario",
-        description: "Cada kit se arma y revisa individualmente antes de despachar.",
-      },
-      {
-        title: "Despacho individual",
-        description: "Envío a domicilio cuando el equipo o los clientes están dispersos.",
-      },
-    ],
     subcategories: [
       { slug: "packs-navidenos", name: "Packs Navideños" },
       { slug: "regalos-ejecutivos", name: "Regalos Ejecutivos" },
@@ -160,8 +88,8 @@ export const services: Service[] = [
    * TODO (cliente): los dos servicios siguientes se agregaron a pedido, pero
    * sus textos son un borrador redactado por nosotros, no información
    * entregada por ASTCORP. Antes de publicar hay que validar con el cliente
-   * la descripción, los beneficios y las subcategorías, y confirmar que el
-   * alcance descrito corresponde a lo que la empresa realmente ejecuta.
+   * la descripción y las subcategorías, y confirmar que el alcance descrito
+   * corresponde a lo que la empresa realmente ejecuta.
    * Su catálogo está vacío hasta que se carguen productos en data/products.ts.
    * ------------------------------------------------------------------- */
   {
@@ -175,24 +103,6 @@ export const services: Service[] = [
       "Una marca se sostiene cuando se ve igual en todos sus soportes. Trabajamos la identidad y, sobre todo, su bajada a producción: que el color, la tipografía y los acabados se mantengan iguales del arte final a la pieza impresa.",
     icon: "branding",
     cover: null,
-    benefits: [
-      {
-        title: "Identidad aplicable",
-        description: "Diseño pensado para producirse, no solo para verse en pantalla.",
-      },
-      {
-        title: "Consistencia de color",
-        description: "El color de marca se controla y se reproduce igual en cada tiraje.",
-      },
-      {
-        title: "Manual de uso",
-        description: "Lineamientos claros para que cualquier proveedor aplique la marca bien.",
-      },
-      {
-        title: "Todo en un proveedor",
-        description: "Del diseño de la marca a la impresión de sus piezas, sin intermediarios.",
-      },
-    ],
     subcategories: [
       { slug: "identidad-visual", name: "Identidad visual" },
       { slug: "manual-de-marca", name: "Manual de marca" },
@@ -211,24 +121,6 @@ export const services: Service[] = [
       "Un proyecto inmobiliario comunica en varios frentes a la vez: la valla en obra, la sala de ventas, el brochure que se lleva el cliente y el kit que recibe al firmar. Producimos todo ese material como un solo paquete, con el mismo estándar gráfico.",
     icon: "realestate",
     cover: null,
-    benefits: [
-      {
-        title: "Sala de ventas completa",
-        description: "Paneles, gráfica de muro y material de apoyo producidos en conjunto.",
-      },
-      {
-        title: "Gran formato para obra",
-        description: "Vallas y cercos con materiales pensados para exposición prolongada.",
-      },
-      {
-        title: "Material de venta",
-        description: "Brochures y fichas de unidad con acabados acordes al valor del proyecto.",
-      },
-      {
-        title: "Entrega por etapas",
-        description: "Producción escalonada según el avance comercial del proyecto.",
-      },
-    ],
     subcategories: [
       { slug: "sala-de-ventas", name: "Sala de ventas" },
       { slug: "senaletica-de-obra", name: "Señalética de obra" },
@@ -242,10 +134,6 @@ export const serviceSlugs = services.map((s) => s.slug);
 
 export function getService(slug: string): Service | undefined {
   return services.find((s) => s.slug === slug);
-}
-
-export function getSubcategory(serviceSlug: string, subSlug: string) {
-  return getService(serviceSlug)?.subcategories.find((s) => s.slug === subSlug);
 }
 
 export function isServiceSlug(slug: string): slug is ServiceSlug {

@@ -21,7 +21,7 @@ export function WhyAstcorp() {
           <RevealItem key={reason.id} className="h-full">
             <Card as="article" interactive className="flex h-full flex-col p-7">
               <IconBadge size="lg">
-                <FeatureIcon name={reason.icon} className="size-6" strokeWidth={1.75} />
+                <FeatureIcon name={reason.icon} aria-hidden="true" />
               </IconBadge>
 
               <h3 className="mt-6 text-[18px] font-bold leading-snug tracking-[-0.02em] text-ink">

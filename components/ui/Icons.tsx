@@ -6,8 +6,6 @@ import {
   PenTool,
   Building2,
   Truck,
-  Layers,
-  ShieldCheck,
   Award,
   Users,
   Boxes,
@@ -30,8 +28,6 @@ const serviceIcons: Record<Service["icon"], LucideIcon> = {
  */
 const featureIcons = {
   truck: Truck,
-  layers: Layers,
-  shield: ShieldCheck,
   award: Award,
   users: Users,
   boxes: Boxes,

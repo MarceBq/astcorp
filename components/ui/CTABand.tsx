@@ -20,7 +20,7 @@ export function CTABand({
   primaryHref?: string;
 }) {
   return (
-    <section className="relative overflow-hidden border-t border-line bg-neutral-50 py-16 sm:py-20">
+    <section className="relative overflow-hidden bg-gradient-to-b from-white via-neutral-50 to-white py-16 sm:py-20">
       <div
         className="pointer-events-none absolute -right-24 top-0 size-[380px] rounded-full bg-brand-lime-50 blur-[130px] opacity-70"
         aria-hidden="true"
@@ -39,7 +39,7 @@ export function CTABand({
             <Button href={primaryHref} size="lg" className="group">
               {primaryLabel}
               <ArrowRight
-                className="size-[18px] transition-transform duration-300 group-hover:translate-x-1"
+                className="size-5 transition-transform duration-300 group-hover:translate-x-1"
                 strokeWidth={2}
                 aria-hidden="true"
               />

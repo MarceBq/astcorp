@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
-import { MapPin, Phone, Clock, MessageCircle } from "lucide-react";
+import { MapPin, Phone, Mail, Clock, MessageCircle } from "lucide-react";
 import { PageHero } from "@/components/layout/PageHero";
 import { Section } from "@/components/ui/Section";
 import { Reveal } from "@/components/ui/Reveal";
@@ -46,21 +46,26 @@ export default function ContactPage() {
           </Reveal>
 
           <Reveal delay={0.08} className="space-y-4">
-            <InfoCard icon={<MapPin className="size-5" strokeWidth={1.75} />} title="Dirección">
-              <p className="text-[15px] leading-relaxed text-ink-2">
+            {/* Teléfono, email y ubicación son los tres datos destacados, con
+                el mismo criterio que el footer: etiqueta discreta y dato
+                grande y en semibold. Aquí el fondo es claro, así que el color
+                de realce es el azul de marca (5.5:1 sobre blanco). */}
+            <InfoCard icon={<MapPin className="size-6" strokeWidth={2} />} title="Dirección">
+              <p className="text-[18px] font-semibold leading-snug tracking-[-0.02em] text-brand-blue">
                 {company.address.full}
-                <br />
+              </p>
+              <p className="mt-1.5 text-[15px] leading-relaxed text-ink-2">
                 {company.address.city}, {company.address.country}
               </p>
             </InfoCard>
 
-            <InfoCard icon={<Phone className="size-5" strokeWidth={1.75} />} title="Teléfonos">
+            <InfoCard icon={<Phone className="size-6" strokeWidth={2} />} title="Teléfonos">
               <ul className="space-y-1.5">
                 {company.phones.map((phone) => (
                   <li key={phone.tel}>
                     <a
                       href={`tel:${phone.tel}`}
-                      className="text-[17px] font-medium tracking-[-0.02em] text-ink transition-colors hover:text-brand-blue"
+                      className="text-[18px] font-semibold tracking-[-0.02em] text-brand-blue transition-colors hover:text-brand-blue-700"
                     >
                       {phone.display}
                     </a>
@@ -69,9 +74,23 @@ export default function ContactPage() {
               </ul>
             </InfoCard>
 
+            {/* El correo sale de data/company.ts, el mismo origen que usa el
+                footer: hoy es un placeholder marcado con TODO y desaparece
+                solo de ambas vistas si se devuelve a `null`. */}
+            {company.email && (
+              <InfoCard icon={<Mail className="size-6" strokeWidth={2} />} title="Email">
+                <a
+                  href={`mailto:${company.email}`}
+                  className="block break-words text-[18px] font-semibold tracking-[-0.02em] text-brand-blue transition-colors hover:text-brand-blue-700"
+                >
+                  {company.email}
+                </a>
+              </InfoCard>
+            )}
+
             {company.whatsapp && (
               <InfoCard
-                icon={<MessageCircle className="size-5" strokeWidth={1.75} />}
+                icon={<MessageCircle className="size-6" strokeWidth={2} />}
                 title="WhatsApp"
               >
                 <a
@@ -85,7 +104,7 @@ export default function ContactPage() {
               </InfoCard>
             )}
 
-            <InfoCard icon={<Clock className="size-5" strokeWidth={1.75} />} title="Atención">
+            <InfoCard icon={<Clock className="size-6" strokeWidth={2} />} title="Atención">
               <p className="text-[15px] leading-relaxed text-ink-2">
                 Coordinamos visitas y entregas de material según el proyecto. Escríbenos para
                 agendar una reunión con un asesor comercial.
@@ -123,7 +142,8 @@ function InfoCard({
         <span className="inline-flex size-9 items-center justify-center rounded-[8px] bg-brand-blue-50 text-brand-blue">
           {icon}
         </span>
-        <h2 className="text-[15px] font-semibold tracking-[-0.015em] text-ink">{title}</h2>
+        {/* Etiqueta discreta: el protagonista es el dato, no su nombre. */}
+        <h2 className="eyebrow text-ink-3">{title}</h2>
       </div>
       <div className="mt-4">{children}</div>
     </div>

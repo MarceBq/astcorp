@@ -14,14 +14,9 @@ export type ServiceSlug =
   | "proyectos-inmobiliarios";
 
 export interface Subcategory {
-  /** Identificador estable, usado en los filtros del catálogo. */
+  /** Identificador estable al que apunta `Product.subcategory`. */
   slug: string;
   name: string;
-}
-
-export interface Benefit {
-  title: string;
-  description: string;
 }
 
 export interface Service {
@@ -35,8 +30,7 @@ export interface Service {
   description: string;
   /** Párrafo largo para el hero de la página de servicio. */
   intro: string;
-  /** Argumentos comerciales mostrados en /servicios/[slug]. */
-  benefits: Benefit[];
+  /** Taxonomía interna del catálogo: a ella apunta `Product.subcategory`. */
   subcategories: Subcategory[];
   /** Ícono de lucide-react, resuelto en components/ui/Icons.tsx */
   icon: "offset" | "visual" | "merch" | "box" | "branding" | "realestate";
@@ -72,22 +66,4 @@ export interface Client {
   url?: string | null;
   /** Marca contenido de muestra pendiente de reemplazo y autorización. */
   isPlaceholder?: boolean;
-}
-
-export interface Stat {
-  /** Valor numérico animado con count-up. */
-  value: number | null;
-  suffix: string;
-  label: string;
-  /** false => la métrica no se renderiza, en lugar de inventar una cifra. */
-  confirmed: boolean;
-}
-
-export interface TimelineEntry {
-  /** Puede ser un año o una etiqueta como "Actualidad". */
-  year: string;
-  title: string;
-  description: string;
-  /** false => año tentativo, pendiente de confirmación del cliente. */
-  confirmed: boolean;
 }

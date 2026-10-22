@@ -2,12 +2,11 @@ import type { Metadata } from "next";
 import { PageHero } from "@/components/layout/PageHero";
 import { Section } from "@/components/ui/Section";
 import { Reveal, RevealGroup, RevealItem } from "@/components/ui/Reveal";
-import { Media } from "@/components/ui/Media";
+import { FramedImage } from "@/components/ui/FramedImage";
+import { HighlightText } from "@/components/ui/HighlightText";
 import { CTABand } from "@/components/ui/CTABand";
-import { Timeline } from "@/components/home/Timeline";
 import { MissionVision } from "@/components/home/MissionVision";
-import { WhyAstcorp } from "@/components/home/WhyAstcorp";
-import { company, yearsOfExperience } from "@/data/company";
+import { company } from "@/data/company";
 import { services } from "@/data/services";
 
 export const metadata: Metadata = {
@@ -22,8 +21,6 @@ export const metadata: Metadata = {
 };
 
 export default function AboutPage() {
-  const years = yearsOfExperience();
-
   return (
     <>
       <PageHero
@@ -35,7 +32,9 @@ export default function AboutPage() {
         aside={
           <div className="flex gap-10">
             <div>
-              <div className="stat-figure text-[38px] leading-none text-ink">{years}+</div>
+              <div className="stat-figure text-[38px] leading-none text-ink">
+                +{company.yearsInOperation}
+              </div>
               <p className="mt-2 text-[13px] text-ink-2">Años de operación</p>
             </div>
             <div>
@@ -52,11 +51,11 @@ export default function AboutPage() {
       <Section tone="plain" size="md" width="wide">
         <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
           <Reveal className="lg:col-span-5">
-            <Media
+            <FramedImage
               src={null}
               alt="Equipo y producción de ASTCORP"
               label="Producción ASTCORP"
-              className="aspect-[4/5]"
+              mediaClassName="aspect-[4/5]"
               sizes="(max-width: 1024px) 100vw, 40vw"
             />
           </Reveal>
@@ -107,25 +106,26 @@ export default function AboutPage() {
           </h2>
         </Reveal>
 
+        {/* Número y título son los dos elementos protagonistas de cada pilar.
+            Sobre tarjeta blanca el lima no contrasta (1.3:1), así que la cifra
+            va en azul de marca y el lima queda para el resaltado del título,
+            el mismo recurso que las cards de Servicios. */}
         <RevealGroup className="mt-12 grid gap-px overflow-hidden rounded-card bg-line sm:grid-cols-2 lg:grid-cols-4">
           {company.values.map((value, index) => (
-            <RevealItem key={value.name} className="bg-white p-7">
-              <span className="stat-figure text-[12px] text-line-strong">
+            <RevealItem key={value.name} className="bg-white p-7 sm:p-8">
+              <span className="stat-figure block text-[46px] leading-none text-brand-blue">
                 {String(index + 1).padStart(2, "0")}
               </span>
-              <h3 className="mt-5 text-[18px] font-semibold tracking-[-0.02em] text-ink">
-                {value.name}
+              <h3 className="mt-6 text-[20px] font-bold leading-relaxed tracking-[-0.02em]">
+                <HighlightText>{value.name}</HighlightText>
               </h3>
-              <p className="mt-2.5 text-[14.5px] leading-relaxed text-ink-2">{value.description}</p>
+              <p className="mt-3 text-[14.5px] leading-relaxed text-ink-2">{value.description}</p>
             </RevealItem>
           ))}
         </RevealGroup>
-
-        <Timeline className="mt-20 lg:mt-28" />
       </Section>
 
       <MissionVision />
-      <WhyAstcorp />
       <CTABand />
     </>
   );

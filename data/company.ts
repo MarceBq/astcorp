@@ -11,6 +11,17 @@ export const company = {
   foundedLabel: "01 de octubre de 2019",
   foundedYear: 2019,
 
+  /**
+   * Años de operación que comunica ASTCORP, mostrados como "+10".
+   *
+   * TODO (cliente): no se derivan de `foundedISO`. Desde la constitución de
+   * 2019 van 7 años, así que esta cifra alude a una trayectoria anterior al
+   * registro de la empresa. Conviene confirmarla, porque la página de
+   * Nosotros y el footer muestran la fecha de fundación y un visitante puede
+   * contrastar ambos datos. Si cambia, se edita solo aquí.
+   */
+  yearsInOperation: 10,
+
   address: {
     street: "Av. Argentina 144",
     district: "Cercado de Lima",
@@ -28,7 +39,13 @@ export const company = {
    * Completar cuando el cliente confirme los canales oficiales.
    * Los componentes ocultan automáticamente lo que quede en `null`.
    */
-  email: null as string | null,
+  /**
+   * TODO (cliente): correo PROVISIONAL, no confirmado por ASTCORP.
+   * Es un placeholder puesto para maquetar el bloque de contacto del footer.
+   * Reemplazar por la dirección real antes de publicar, o volver a `null`
+   * para que el dato desaparezca solo de la interfaz.
+   */
+  email: "contacto@astcorp.com" as string | null,
   whatsapp: null as { number: string; url: string } | null,
   social: {
     instagram: null as string | null,
@@ -80,14 +97,3 @@ export const company = {
   /** Base URL para metadata, sitemap y Open Graph. */
   url: "https://astcorp.pe",
 } as const;
-
-/** Años de operación calculados desde la fundación: nunca se codifica a mano. */
-export function yearsOfExperience(reference: Date = new Date()): number {
-  const founded = new Date(company.foundedISO);
-  let years = reference.getFullYear() - founded.getFullYear();
-  const beforeAnniversary =
-    reference.getMonth() < founded.getMonth() ||
-    (reference.getMonth() === founded.getMonth() && reference.getDate() < founded.getDate());
-  if (beforeAnniversary) years -= 1;
-  return Math.max(years, 0);
-}

@@ -179,6 +179,25 @@
   text-wrap: initial;
 }
 
+/* Resaltado tipo marcador para títulos de tarjeta.
+   La franja cubre los dos tercios inferiores del texto, no el bloque entero.
+   `box-decoration-break: clone` hace que cada línea reciba su propia franja,
+   así que funciona igual en un título de una o de tres líneas.
+   El color se cambia redefiniendo `--highlight-color`. */
+@utility highlight-text {
+  --highlight-color: var(--color-brand-lime);
+  background-image: linear-gradient(to bottom, transparent 36%, var(--highlight-color) 36%);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+  border-radius: 4px;
+  /* El margen negativo compensa el padding: la franja sobresale del texto
+     sin desalinearlo respecto al resto de la tarjeta. */
+  padding: 0.04em 0.18em 0.08em;
+  margin-inline: -0.18em;
+}
+
 /* ==========================================================================
    Accesibilidad — movimiento reducido
    ========================================================================== */

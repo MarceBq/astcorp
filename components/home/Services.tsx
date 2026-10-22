@@ -22,7 +22,7 @@ export function Services() {
           <Button href="/servicios" variant="outline" className="group/cta">
             Ver todos los servicios
             <ArrowRight
-              className="size-[18px] transition-transform duration-300 group-hover/cta:translate-x-1"
+              className="size-5 transition-transform duration-300 group-hover/cta:translate-x-1"
               strokeWidth={2}
               aria-hidden="true"
             />

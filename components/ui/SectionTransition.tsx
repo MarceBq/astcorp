@@ -1,31 +1,40 @@
 import { cn } from "@/lib/utils";
 
+const surfaces = {
+  white: { bg: "bg-white", fill: "fill-white" },
+  tint: { bg: "bg-neutral-50", fill: "fill-neutral-50" },
+  blue: { bg: "bg-brand-blue", fill: "fill-brand-blue" },
+  blueDeep: { bg: "bg-brand-blue-900", fill: "fill-brand-blue-900" },
+};
+
 /**
- * Transición curva entre dos secciones.
+ * Transición curva entre dos secciones de fondo distinto.
  *
- * Se usa donde el fondo cambia de claro a azul, que es el único corte fuerte
- * que queda en la página. En lugar de un canto recto, el color entra con una
- * curva suave que arranca desde la sección anterior.
+ * Es el recurso con el que la página evita los cantos rectos: el color de la
+ * sección siguiente entra con una curva que arranca desde la anterior, en vez
+ * de empezar de golpe.
  *
- * `from` es el color de la sección que queda arriba; la curva se dibuja con
- * el color de la sección de abajo.
+ * `from` es la superficie de arriba y `to` la de abajo; la curva se dibuja
+ * con el color de `to`.
  */
 export function SectionTransition({
-  variant = "toBlue",
+  from = "white",
+  to = "blue",
   className,
 }: {
-  variant?: "toBlue" | "fromBlue";
+  from?: keyof typeof surfaces;
+  to?: keyof typeof surfaces;
   className?: string;
 }) {
-  const fill = variant === "toBlue" ? "fill-brand-blue" : "fill-white";
-  const bg = variant === "toBlue" ? "bg-white" : "bg-brand-blue";
-
   return (
-    <div aria-hidden="true" className={cn("relative -mb-px w-full overflow-hidden", bg, className)}>
+    <div
+      aria-hidden="true"
+      className={cn("relative -mb-px w-full overflow-hidden", surfaces[from].bg, className)}
+    >
       <svg
         viewBox="0 0 1440 90"
         preserveAspectRatio="none"
-        className={cn("block h-[60px] w-full sm:h-[80px]", fill)}
+        className={cn("block h-[52px] w-full sm:h-[76px]", surfaces[to].fill)}
       >
         <path d="M0,90 C360,10 1080,10 1440,90 Z" />
       </svg>

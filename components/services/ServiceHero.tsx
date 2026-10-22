@@ -3,20 +3,26 @@ import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
 import { Reveal } from "@/components/ui/Reveal";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
-import { ServiceIcon } from "@/components/ui/Icons";
 import type { Service } from "@/data/types";
 
 /**
  * Encabezado de /servicios/[slug].
  * Compensa la altura del navbar fijo y mantiene una jerarquía consistente
- * entre las cuatro líneas de negocio.
+ * entre las seis líneas de negocio.
+ *
+ * Sin cifras ni ícono: el encabezado es solo etiqueta, titular, entradilla y
+ * acciones, en una columna.
+ *
+ * `hasCatalog` es false en los servicios que aún no tienen productos
+ * cargados: allí no se renderiza la sección de catálogo, así que el botón
+ * que lleva a ella tampoco debe aparecer.
  */
 export function ServiceHero({
   service,
-  productCount,
+  hasCatalog,
 }: {
   service: Service;
-  productCount: number;
+  hasCatalog: boolean;
 }) {
   return (
     <div className="bg-gradient-to-b from-neutral-50 to-white">
@@ -32,13 +38,10 @@ export function ServiceHero({
             ]}
           />
 
-          <div className="gap-12 lg:flex lg:items-end lg:justify-between">
+          <div>
             <Reveal className="max-w-3xl">
               {/* Línea de cabecera: predomina el azul, con remate lime */}
               <div className="mb-6 flex items-center gap-3">
-                <span className="inline-flex size-11 items-center justify-center rounded-[12px] bg-brand-lime-50 text-brand-blue">
-                  <ServiceIcon name={service.icon} className="size-6" strokeWidth={1.75} />
-                </span>
                 <span className="h-[3px] w-7 rounded-full bg-brand-lime" aria-hidden="true" />
                 <span className="eyebrow text-brand-blue">Servicio</span>
               </div>
@@ -52,36 +55,19 @@ export function ServiceHero({
               </p>
 
               <div className="mt-9 flex flex-col gap-3 sm:flex-row">
-                <Button href="#catalogo" className="group">
-                  Ver catálogo
-                  <ArrowRight
-                    className="size-[18px] transition-transform duration-300 group-hover:translate-y-0.5 group-hover:rotate-90"
-                    strokeWidth={2}
-                    aria-hidden="true"
-                  />
-                </Button>
-                <Button href="/contacto" variant="outline">
+                {hasCatalog && (
+                  <Button href="#catalogo" className="group">
+                    Ver catálogo
+                    <ArrowRight
+                      className="size-5 transition-transform duration-300 group-hover:translate-y-0.5 group-hover:rotate-90"
+                      strokeWidth={2}
+                      aria-hidden="true"
+                    />
+                  </Button>
+                )}
+                <Button href="/contacto" variant={hasCatalog ? "outline" : "primary"}>
                   Solicitar cotización
                 </Button>
-              </div>
-            </Reveal>
-
-            <Reveal delay={0.1} className="mt-10 shrink-0 lg:mt-0">
-              <div className="flex gap-10">
-                <div>
-                  <div className="stat-figure text-[38px] leading-none text-ink">
-                    {productCount}
-                  </div>
-                  <p className="mt-2 text-[13px] text-ink-2">
-                    {productCount === 1 ? "Producto" : "Productos"}
-                  </p>
-                </div>
-                <div>
-                  <div className="stat-figure text-[38px] leading-none text-ink">
-                    {service.subcategories.length}
-                  </div>
-                  <p className="mt-2 text-[13px] text-ink-2">Categorías</p>
-                </div>
               </div>
             </Reveal>
           </div>

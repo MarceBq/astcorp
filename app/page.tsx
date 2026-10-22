@@ -1,36 +1,30 @@
 import { Hero } from "@/components/home/Hero";
 import { WhyAstcorp } from "@/components/home/WhyAstcorp";
-import { Differentials } from "@/components/home/Differentials";
-import { ClientsCarousel } from "@/components/home/ClientsCarousel";
-import { Services } from "@/components/home/Services";
-import { Trust } from "@/components/home/Trust";
-import { FeaturedProducts } from "@/components/home/FeaturedProducts";
 import { Process } from "@/components/home/Process";
+import { Services } from "@/components/home/Services";
+import { FeaturedProducts } from "@/components/home/FeaturedProducts";
 import { FinalCTA } from "@/components/home/FinalCTA";
+import { ClientsCarousel } from "@/components/home/ClientsCarousel";
 
 /**
  * Home.
  *
- * Orden: el argumento de venta (Por qué ASTCORP) va inmediatamente después del
- * hero, y recién luego los diferenciales, la prueba social y el catálogo.
+ * El proceso va inmediatamente después del argumento de venta, y la prueba
+ * social cierra la página justo antes del footer.
  *
- * Ritmo cromático deliberado, alternando claro y oscuro para que la página no
- * se lea como un documento continuo:
- * hero oscuro -> blanco -> azul profundo -> lime -> claro -> azul profundo ->
- * blanco -> blanco -> azul.
+ * Ritmo de fondos: claro salvo dos bloques azules —el proceso y el cierre—,
+ * ambos con transición curva para que no se lean como láminas sueltas.
  */
 export default function HomePage() {
   return (
     <>
       <Hero />
       <WhyAstcorp />
-      <Differentials />
-      <ClientsCarousel />
-      <Services />
-      <Trust />
-      <FeaturedProducts />
       <Process />
+      <Services />
+      <FeaturedProducts />
       <FinalCTA />
+      <ClientsCarousel />
     </>
   );
 }

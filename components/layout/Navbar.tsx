@@ -94,7 +94,7 @@ export function Navbar() {
                     : "border-brand-blue-900/25 text-brand-blue-900 hover:bg-brand-blue-900/10",
                 )}
               >
-                <Menu className="size-6" strokeWidth={2.5} />
+                <Menu className="size-7" strokeWidth={2.5} />
               </button>
             </div>
           </div>
@@ -139,7 +139,7 @@ function NavEntry({
         {item.label}
         {hasChildren && (
           <ChevronDown
-            className={cn("size-[18px] transition-transform duration-200", open && "rotate-180")}
+            className={cn("size-5 transition-transform duration-200", open && "rotate-180")}
             strokeWidth={2.75}
             aria-hidden="true"
           />

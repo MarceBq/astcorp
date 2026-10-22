@@ -4,8 +4,7 @@ import { cn } from "@/lib/utils";
  * Tarjeta única del sistema.
  *
  * Todas las tarjetas del sitio salen de aquí: mismo radio, mismo filete,
- * misma sombra y la misma reacción al cursor. Es la pieza que más hacía
- * que cada sección pareciera de un diseño distinto.
+ * misma sombra y la misma reacción al cursor.
  */
 export function Card({
   as: Tag = "div",
@@ -35,30 +34,50 @@ export function Card({
   );
 }
 
+/**
+ * Tamaños del contenedor de ícono.
+ *
+ * El tamaño del SVG y el grosor de trazo se imponen desde aquí
+ * (`[&_svg]:…`), de modo que ningún punto del sitio pueda quedarse con un
+ * ícono más pequeño o más fino: basta con usar `IconBadge`.
+ */
 const badgeSizes = {
-  md: "size-12 rounded-[12px]",
-  lg: "size-14 rounded-[14px]",
+  sm: "size-12 rounded-[14px] [&_svg]:size-6",
+  md: "size-14 rounded-[16px] [&_svg]:size-7",
+  lg: "size-16 rounded-[18px] [&_svg]:size-8",
 };
 
 /**
- * Contenedor de ícono, igual en toda la web: fondo lima muy suave con el
- * ícono en azul, que se invierte a lima pleno al pasar el cursor.
+ * Paletas del badge. Las dos son de marca y ambas con contraste alto:
+ * lima sobre azul 11.6:1, azul profundo sobre lima 11.0:1.
  */
+const badgeTones = {
+  /** Azul de marca con el ícono en verde lima. */
+  blue: "bg-brand-blue text-brand-lime group-hover:bg-brand-lime group-hover:text-brand-blue-900",
+  /** Verde lima con el ícono en azul profundo. */
+  lime: "bg-brand-lime text-brand-blue-900 group-hover:bg-brand-blue group-hover:text-brand-lime",
+  /** Para fondos azules: translúcido con el ícono en lima. */
+  onDark: "bg-white/10 text-brand-lime ring-1 ring-white/25",
+};
+
 export function IconBadge({
   size = "md",
+  tone = "blue",
   className,
   children,
 }: {
   size?: keyof typeof badgeSizes;
+  tone?: keyof typeof badgeTones;
   className?: string;
   children: React.ReactNode;
 }) {
   return (
     <span
       className={cn(
-        "inline-flex shrink-0 items-center justify-center bg-brand-lime-50 text-brand-blue",
-        "transition-colors duration-300 group-hover:bg-brand-lime group-hover:text-ink",
+        "inline-flex shrink-0 items-center justify-center transition-colors duration-300",
+        "[&_svg]:[stroke-width:2]",
         badgeSizes[size],
+        badgeTones[tone],
         className,
       )}
     >

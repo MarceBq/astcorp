@@ -140,7 +140,7 @@ export function Hero() {
             <Button href="/contacto" size="lg" variant="accent" className="group">
               Solicitar cotización
               <ArrowRight
-                className="size-[18px] transition-transform duration-300 group-hover:translate-x-1"
+                className="size-5 transition-transform duration-300 group-hover:translate-x-1"
                 strokeWidth={2}
                 aria-hidden="true"
               />
@@ -162,7 +162,7 @@ export function Hero() {
         className="absolute inset-x-0 bottom-5 z-10 mx-auto flex w-fit flex-col items-center gap-1.5 text-white/60 transition-colors hover:text-white"
       >
         <span className="text-[10.5px] font-semibold uppercase tracking-[0.2em]">Scroll</span>
-        <ChevronDown className="size-[18px] animate-bounce" strokeWidth={1.75} aria-hidden="true" />
+        <ChevronDown className="size-5 animate-bounce" strokeWidth={2} aria-hidden="true" />
       </motion.a>
     </section>
   );

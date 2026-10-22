@@ -51,7 +51,7 @@ export function MobileMenu({ open, onClose }: { open: boolean; onClose: () => vo
               aria-label="Cerrar menú"
               className="inline-flex size-10 items-center justify-center rounded-[10px] border-2 border-brand-blue-900/25 text-brand-blue-900 transition-colors hover:bg-brand-blue-900/10"
             >
-              <X className="size-6" strokeWidth={2.5} />
+              <X className="size-7" strokeWidth={2.5} />
             </button>
           </div>
 
@@ -87,9 +87,9 @@ export function MobileMenu({ open, onClose }: { open: boolean; onClose: () => vo
                           className="inline-flex size-9 items-center justify-center rounded-[8px] border-2 border-line text-brand-blue"
                         >
                           {isOpen ? (
-                            <Minus className="size-[18px]" strokeWidth={2.75} />
+                            <Minus className="size-5" strokeWidth={2.75} />
                           ) : (
-                            <Plus className="size-[18px]" strokeWidth={2.75} />
+                            <Plus className="size-5" strokeWidth={2.75} />
                           )}
                         </button>
                       )}
@@ -137,7 +137,7 @@ export function MobileMenu({ open, onClose }: { open: boolean; onClose: () => vo
                   href={`tel:${phone.tel}`}
                   className="inline-flex items-center gap-1.5 transition-colors hover:text-brand-blue"
                 >
-                  <Phone className="size-4" strokeWidth={1.75} aria-hidden="true" />
+                  <Phone className="size-5" strokeWidth={2} aria-hidden="true" />
                   {phone.display}
                 </a>
               ))}

@@ -80,7 +80,7 @@ export function ContactForm() {
       <div className="rounded-card border border-line bg-white p-10 text-center">
         <CheckCircle2
           className="mx-auto size-11 text-brand-blue"
-          strokeWidth={1.5}
+          strokeWidth={2}
           aria-hidden="true"
         />
         <h2 className="mt-5 text-[22px] font-semibold tracking-[-0.02em] text-ink">
@@ -196,8 +196,8 @@ export function ContactForm() {
           >
             <span className="flex min-w-0 items-center gap-2.5 text-[14px] text-ink-2">
               <Paperclip
-                className="size-[18px] shrink-0 text-ink-3"
-                strokeWidth={1.75}
+                className="size-5 shrink-0 text-ink-3"
+                strokeWidth={2}
                 aria-hidden="true"
               />
               <span className="truncate">
@@ -224,8 +224,8 @@ export function ContactForm() {
           className="mt-6 flex items-start gap-3 rounded-[10px] border border-line bg-neutral-50 px-4 py-3.5 text-[14px] leading-relaxed text-ink-2"
         >
           <AlertCircle
-            className="mt-0.5 size-[18px] shrink-0 text-ink-3"
-            strokeWidth={1.75}
+            className="mt-0.5 size-5 shrink-0 text-ink-3"
+            strokeWidth={2}
             aria-hidden="true"
           />
           No pudimos enviar la solicitud. Vuelve a intentarlo o escríbenos directamente a los
@@ -246,14 +246,14 @@ export function ContactForm() {
         >
           {status === "submitting" ? (
             <>
-              <Loader2 className="size-[18px] animate-spin" strokeWidth={2} aria-hidden="true" />
+              <Loader2 className="size-5 animate-spin" strokeWidth={2} aria-hidden="true" />
               Enviando
             </>
           ) : (
             <>
               Solicitar cotización
               <ArrowRight
-                className="size-[18px] transition-transform duration-300 group-hover:translate-x-1"
+                className="size-5 transition-transform duration-300 group-hover:translate-x-1"
                 strokeWidth={2}
                 aria-hidden="true"
               />

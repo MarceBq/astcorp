@@ -61,7 +61,7 @@ export function Media({
           role="img"
           aria-label={alt}
         >
-          <ImageIcon className="size-[22px] text-ink-3" strokeWidth={1.5} aria-hidden="true" />
+          <ImageIcon className="size-6 text-ink-3" strokeWidth={2} aria-hidden="true" />
           <span className="eyebrow max-w-[80%] text-ink-3">{label ?? "Imagen pendiente"}</span>
         </div>
       )}

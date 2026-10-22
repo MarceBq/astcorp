@@ -30,6 +30,22 @@ export const stagger = (staggerChildren = 0.07, delayChildren = 0): Variants => 
   visible: { transition: { staggerChildren, delayChildren } },
 });
 
+/**
+ * Resaltador: la franja se pinta de izquierda a derecha.
+ *
+ * Hereda el estado del `Reveal` que envuelve la tarjeta, así que se pinta
+ * justo cuando la tarjeta entra en pantalla. Fuera de un `Reveal` —o con
+ * movimiento reducido, donde `Reveal` deja de propagar variantes— el span
+ * se queda con el `background-size` de la clase, es decir, ya pintado.
+ */
+export const highlightSweep: Variants = {
+  hidden: { backgroundSize: "0% 100%" },
+  visible: {
+    backgroundSize: "100% 100%",
+    transition: { duration: 0.5, ease: easeOutSoft, delay: 0.15 },
+  },
+};
+
 /** Revelado de imagen: la máscara sube y deja ver el medio. */
 export const imageReveal: Variants = {
   hidden: { clipPath: "inset(0 0 100% 0)" },

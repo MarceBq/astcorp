@@ -1,14 +1,13 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { Check } from "lucide-react";
 import { Section } from "@/components/ui/Section";
 import { SectionHeading } from "@/components/ui/SectionHeading";
-import { Reveal, RevealGroup, RevealItem } from "@/components/ui/Reveal";
+import { Reveal } from "@/components/ui/Reveal";
 import { Media } from "@/components/ui/Media";
+import { HighlightText } from "@/components/ui/HighlightText";
 import { ServiceHero } from "@/components/services/ServiceHero";
 import { ServiceCTA } from "@/components/services/ServiceCTA";
-import { ProductCatalog } from "@/components/services/ProductCatalog";
 import { getService, services } from "@/data/services";
 import { productsByService } from "@/data/products";
 import type { ServiceSlug } from "@/data/types";
@@ -49,82 +48,39 @@ export default async function ServicePage({ params }: Params) {
   return (
     <>
       {/* Hero */}
-      <ServiceHero service={service} productCount={items.length} />
+      <ServiceHero service={service} hasCatalog={items.length > 0} />
 
-      {/* Descripción del servicio */}
-      <Section tone="plain" size="md" width="wide">
-        <div className="grid gap-12 lg:grid-cols-[1fr_1.05fr] lg:gap-20">
-          <Reveal>
-            <div className="mb-4 flex items-center gap-2.5">
-              <span className="h-px w-6 bg-brand-lime" aria-hidden="true" />
-              <span className="eyebrow text-brand-blue">El servicio</span>
-            </div>
+      {/* Catálogo: solo encabezado y galería. Sin filtros, sin ficha y sin
+          texto sobre las imágenes; el detalle se resuelve en la cotización.
+          Los servicios sin productos cargados no renderizan la sección, para
+          no dejar un encabezado sin nada debajo. */}
+      {items.length > 0 && (
+        <Section id="catalogo" tone="plain" size="md" width="wide">
+          <SectionHeading
+            eyebrow="Catálogo"
+            title={`Catálogo de ${service.name}`}
+            description="Una muestra de lo que producimos en esta línea. Todos los trabajos se cotizan según material, acabado y volumen."
+          />
 
-            <h2 className="text-[clamp(1.6rem,2.8vw,2.25rem)] font-semibold leading-[1.1] text-ink">
-              {service.description}
-            </h2>
-
-            <p className="mt-6 text-[16px] leading-relaxed text-ink-2">{service.intro}</p>
-
-            <div className="mt-8 border-t border-line pt-7">
-              <h3 className="eyebrow text-ink-3">Qué incluye</h3>
-              <ul className="mt-4 flex flex-wrap gap-2">
-                {service.subcategories.map((sub) => (
-                  <li
-                    key={sub.slug}
-                    className="rounded-[8px] border border-line bg-neutral-50 px-3 py-1.5 text-[13.5px] text-ink-2"
-                  >
-                    {sub.name}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </Reveal>
-
-          <Reveal delay={0.08}>
-            <Media
-              src={service.cover}
-              alt={service.title}
-              label={service.name}
-              className="aspect-[4/5] sm:aspect-[4/3] lg:aspect-[4/5]"
-              sizes="(max-width: 1024px) 100vw, 50vw"
-            />
-          </Reveal>
-        </div>
-      </Section>
-
-      {/* Beneficios */}
-      <Section tone="tint" size="md" width="wide">
-        <SectionHeading eyebrow="Beneficios" title={`Por qué producir tu ${service.name.toLowerCase()} con ASTCORP.`} />
-
-        <RevealGroup
-          gap={0.06}
-          className="mt-12 grid gap-px overflow-hidden rounded-card bg-line sm:grid-cols-2 lg:grid-cols-4"
-        >
-          {service.benefits.map((benefit) => (
-            <RevealItem key={benefit.title} className="bg-white p-6 lg:p-7">
-              <Check className="size-[22px] text-brand-blue" strokeWidth={2} aria-hidden="true" />
-              <h3 className="mt-5 text-[16px] font-semibold leading-snug tracking-[-0.02em] text-ink">
-                {benefit.title}
-              </h3>
-              <p className="mt-2 text-[14px] leading-relaxed text-ink-2">{benefit.description}</p>
-            </RevealItem>
-          ))}
-        </RevealGroup>
-      </Section>
-
-      {/* Catálogo */}
-      <Section id="catalogo" tone="plain" size="md" width="wide">
-        <SectionHeading
-          eyebrow="Catálogo"
-          title={`Catálogo de ${service.name}`}
-          description="Filtra por categoría y abre cualquier producto para ver el detalle. Todos los trabajos se cotizan según material, acabado y volumen."
-        />
-
-        <div className="mt-12">
-          <ProductCatalog products={items} subcategories={service.subcategories} />
-        </div>
-      </Section>
+          {/* Cada imagen se revela por su cuenta en lugar de colgar de un
+              `RevealGroup`: con catálogos largos la rejilla es más alta que
+              la pantalla y el umbral del grupo no llegaría a cumplirse. El
+              retraso por columna conserva el escalonado de cada fila. */}
+          <div className="mt-16 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:mt-20 lg:grid-cols-3 lg:gap-10">
+            {items.map((product, index) => (
+              <Reveal key={product.slug} delay={(index % 3) * 0.06}>
+                <Media
+                  src={product.images[0]}
+                  alt={`${product.name} — ${service.name}`}
+                  label={product.name}
+                  className="aspect-[4/3] transition-[transform,box-shadow] duration-500 ease-out-soft hover:-translate-y-1 hover:shadow-card"
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                />
+              </Reveal>
+            ))}
+          </div>
+        </Section>
+      )}
 
       {/* Otros servicios */}
       <Section tone="tint" size="sm" width="wide">
@@ -136,8 +92,8 @@ export default async function ServicePage({ params }: Params) {
               href={`/servicios/${other.slug}`}
               className="group bg-white p-6 transition-colors hover:bg-neutral-50"
             >
-              <span className="text-[17px] font-semibold tracking-[-0.02em] text-ink transition-colors group-hover:text-brand-blue">
-                {other.title}
+              <span className="block text-[17px] font-semibold leading-relaxed tracking-[-0.02em]">
+                <HighlightText>{other.title}</HighlightText>
               </span>
               <span className="mt-2 block text-[14px] leading-relaxed text-ink-2">
                 {other.short}

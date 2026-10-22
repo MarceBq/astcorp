@@ -62,7 +62,9 @@ export function SectionHeading({
             )}
           >
             <span className="h-[3px] w-7 rounded-full bg-brand-lime" aria-hidden="true" />
-            <span className={cn("eyebrow", dark ? "text-brand-lime" : "text-brand-blue")}>
+            {/* Sobre azul el acento lo da el filete: el lima a 11px se queda
+                en 4.36:1 sobre #5151ED, por debajo de AA para texto chico. */}
+            <span className={cn("eyebrow", dark ? "text-white" : "text-brand-blue")}>
               {eyebrow}
             </span>
           </div>
@@ -84,7 +86,7 @@ export function SectionHeading({
           <p
             className={cn(
               "mt-5 text-[17px] leading-relaxed",
-              dark ? "text-white/80" : "text-ink-2",
+              dark ? "text-white/90" : "text-ink-2",
             )}
           >
             {description}
