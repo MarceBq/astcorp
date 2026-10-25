@@ -31,9 +31,9 @@ export function Services() {
       />
 
       <RevealGroup gap={0.07} className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        {services.map((service) => (
+        {services.map((service, index) => (
           <RevealItem key={service.slug} className="h-full">
-            <ServiceCard service={service} />
+            <ServiceCard service={service} index={index} />
           </RevealItem>
         ))}
       </RevealGroup>

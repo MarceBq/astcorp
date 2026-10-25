@@ -30,23 +30,19 @@ export const company = {
     full: "Av. Argentina 144 – Cercado de Lima",
   },
 
-  phones: [
-    { display: "982 926 333", tel: "+51982926333" },
-   
-  ],
+  phones: [{ display: "941 636 233", tel: "+51941636233" }],
+
+  email: "ventas@astcorpo.com" as string | null,
+
+  whatsapp: {
+    number: "+51941636233",
+    url: "https://wa.me/51941636233",
+  } as { number: string; url: string } | null,
 
   /**
    * Completar cuando el cliente confirme los canales oficiales.
    * Los componentes ocultan automáticamente lo que quede en `null`.
    */
-  /**
-   * TODO (cliente): correo PROVISIONAL, no confirmado por ASTCORP.
-   * Es un placeholder puesto para maquetar el bloque de contacto del footer.
-   * Reemplazar por la dirección real antes de publicar, o volver a `null`
-   * para que el dato desaparezca solo de la interfaz.
-   */
-  email: "contacto@astcorp.com" as string | null,
-  whatsapp: null as { number: string; url: string } | null,
   social: {
     instagram: null as string | null,
     facebook: null as string | null,

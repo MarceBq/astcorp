@@ -86,6 +86,7 @@ const organizationSchema = {
   contactPoint: company.phones.map((phone) => ({
     "@type": "ContactPoint",
     telephone: phone.tel,
+    ...(company.email ? { email: company.email } : {}),
     contactType: "sales",
     areaServed: "PE",
     availableLanguage: "Spanish",

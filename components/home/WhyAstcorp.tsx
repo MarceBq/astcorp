@@ -1,7 +1,7 @@
 import { Section } from "@/components/ui/Section";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { RevealGroup, RevealItem } from "@/components/ui/Reveal";
-import { Card, IconBadge } from "@/components/ui/Card";
+import { IconCard } from "@/components/ui/IconCard";
 import { FeatureIcon } from "@/components/ui/Icons";
 import { reasons } from "@/data/why";
 
@@ -17,20 +17,14 @@ export function WhyAstcorp() {
       />
 
       <RevealGroup gap={0.07} className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-        {reasons.map((reason) => (
+        {reasons.map((reason, index) => (
           <RevealItem key={reason.id} className="h-full">
-            <Card as="article" interactive className="flex h-full flex-col p-7">
-              <IconBadge size="lg">
-                <FeatureIcon name={reason.icon} aria-hidden="true" />
-              </IconBadge>
-
-              <h3 className="mt-6 text-[18px] font-bold leading-snug tracking-[-0.02em] text-ink">
-                {reason.title}
-              </h3>
-              <p className="mt-2.5 flex-1 text-[14.5px] leading-relaxed text-ink-2">
-                {reason.description}
-              </p>
-            </Card>
+            <IconCard
+              index={index}
+              icon={<FeatureIcon name={reason.icon} aria-hidden="true" />}
+              title={reason.title}
+              description={reason.description}
+            />
           </RevealItem>
         ))}
       </RevealGroup>

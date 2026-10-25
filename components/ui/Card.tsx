@@ -48,17 +48,31 @@ const badgeSizes = {
 };
 
 /**
- * Paletas del badge. Las dos son de marca y ambas con contraste alto:
- * lima sobre azul 11.6:1, azul profundo sobre lima 11.0:1.
+ * Paletas del badge: los dos colores de marca, uno sobre el otro. Ambas
+ * combinaciones dan 4.3:1 entre ícono y contenedor, por encima del 3:1
+ * mínimo de contraste no textual.
  */
 const badgeTones = {
   /** Azul de marca con el ícono en verde lima. */
-  blue: "bg-brand-blue text-brand-lime group-hover:bg-brand-lime group-hover:text-brand-blue-900",
-  /** Verde lima con el ícono en azul profundo. */
-  lime: "bg-brand-lime text-brand-blue-900 group-hover:bg-brand-blue group-hover:text-brand-lime",
+  blue: "bg-brand-blue text-brand-lime",
+  /** Verde lima con el ícono en azul de marca. */
+  lime: "bg-brand-lime text-brand-blue",
   /** Para fondos azules: translúcido con el ícono en lima. */
   onDark: "bg-white/10 text-brand-lime ring-1 ring-white/25",
 };
+
+export type BadgeTone = keyof typeof badgeTones;
+
+/**
+ * Ciclo de paletas de una fila de cards: azul y lima alternados. Se resuelve
+ * por índice, nunca card por card, así que añadir o quitar una card reordena
+ * el patrón sola.
+ */
+const badgeCycle = ["blue", "lime"] as const;
+
+export function badgeToneFor(index: number): BadgeTone {
+  return badgeCycle[index % badgeCycle.length];
+}
 
 export function IconBadge({
   size = "md",
@@ -67,7 +81,7 @@ export function IconBadge({
   children,
 }: {
   size?: keyof typeof badgeSizes;
-  tone?: keyof typeof badgeTones;
+  tone?: BadgeTone;
   className?: string;
   children: React.ReactNode;
 }) {

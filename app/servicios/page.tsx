@@ -32,10 +32,12 @@ export default function ServicesPage() {
       />
 
       <Section tone="plain" size="md" width="wide">
-        <RevealGroup gap={0.07} className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {services.map((service) => (
+        {/* Tres columnas: con seis servicios quedan dos filas completas, sin
+            huecos sueltos al final como dejaban cuatro. */}
+        <RevealGroup gap={0.07} className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {services.map((service, index) => (
             <RevealItem key={service.slug} className="h-full">
-              <ServiceCard service={service} highlightTitle />
+              <ServiceCard service={service} index={index} highlightTitle />
             </RevealItem>
           ))}
         </RevealGroup>

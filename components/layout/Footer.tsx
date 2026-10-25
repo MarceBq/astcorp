@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { MapPin, Phone, Mail, MessageCircle } from "lucide-react";
+import { MapPin, Phone, Mail } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { Logo } from "@/components/ui/Logo";
 import { SectionTransition } from "@/components/ui/SectionTransition";
@@ -19,7 +19,7 @@ import { company } from "@/data/company";
  * Teléfono, email y ubicación son los tres datos destacados —blanco puro y
  * semibold— por encima del resto del texto.
  *
- * Solo se muestran los canales realmente disponibles: email, WhatsApp y redes
+ * Solo se muestran los canales realmente disponibles: el email y las redes
  * permanecen ocultos mientras estén en `null` en data/company.ts.
  */
 export function Footer() {
@@ -108,24 +108,6 @@ export function Footer() {
                   Contacto
                 </h2>
                 <address className="mt-4 space-y-3.5 not-italic text-[15.5px] text-white/80">
-                  {company.whatsapp && (
-                    <div className="flex items-start gap-2.5">
-                      <MessageCircle
-                        className="mt-0.5 size-[18px] shrink-0 text-brand-lime"
-                        strokeWidth={1.75}
-                        aria-hidden="true"
-                      />
-                      <a
-                        href={company.whatsapp.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="transition-colors hover:text-brand-lime"
-                      >
-                        WhatsApp
-                      </a>
-                    </div>
-                  )}
-
                   <div className="flex items-start gap-2.5">
                     <Phone
                       className="mt-0.5 size-[18px] shrink-0 text-brand-lime"
@@ -189,8 +171,7 @@ export function Footer() {
               derechos reservados.
             </p>
             <p>
-              Fundada el {company.foundedLabel} &middot; {company.address.city},{" "}
-              {company.address.country}
+              {company.address.city}, {company.address.country}
             </p>
           </div>
         </Container>
