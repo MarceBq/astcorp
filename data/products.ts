@@ -29,7 +29,7 @@ export const products: Product[] = [
     summary: "Tarjetas con acabados premium y control de color consistente.",
     description:
       "La pieza más pequeña de la papelería corporativa y la que más se toca. Trabajamos gramajes altos, laminados y acabados especiales para que la tarjeta sostenga la percepción de la marca en cada entrega.",
-    images: [],
+    images: ["/images/products/tarjetas-de-presentacion/01.webp"],
     features: [
       "Gramajes altos y papeles especiales",
       "Laminado mate, brillante o soft touch",
@@ -65,7 +65,7 @@ export const products: Product[] = [
     summary: "Carpetas porta documentos para propuestas y material comercial.",
     description:
       "Soporte de la presentación comercial: troquelado, solapas y bolsillos definidos según el material que debe contener, con acabados que acompañan la propuesta.",
-    images: [],
+    images: ["/images/products/folder-corporativo/01.webp"],
     features: [
       "Troquel con solapa y porta tarjeta",
       "Laminado mate o brillante",
@@ -83,7 +83,7 @@ export const products: Product[] = [
     summary: "Estuchería para producto terminado con troquel a medida.",
     description:
       "Empaque secundario desarrollado desde el troquel: estructura, resistencia y gráfica se definen juntas para que la caja proteja el producto y comunique la marca en góndola.",
-    images: [],
+    images: ["/images/products/cajas-plegadizas/01.webp"],
     features: [
       "Troquel desarrollado a medida",
       "Cartulinas según resistencia requerida",
@@ -101,7 +101,7 @@ export const products: Product[] = [
     summary: "Bolsas impresas para tienda, evento y entrega de producto.",
     description:
       "La bolsa circula fuera del punto de venta y sigue comunicando. Definimos formato, asa y resistencia según el peso real que va a cargar.",
-    images: ["/images/products/bolsa.jpg"],
+    images: ["/images/products/bolsas-de-papel-personalizadas/01.webp"],
     features: [
       "Formatos y fuelles a medida",
       "Asas de cinta, cordón o troqueladas",
@@ -116,7 +116,8 @@ export const products: Product[] = [
     name: "Estuches premium",
     service: "offset",
     subcategory: "empaques",
-    summary: "Empaque rígido y acabados especiales para producto de alto valor.",
+    summary:
+      "Empaque rígido y acabados especiales para producto de alto valor.",
     description:
       "Estuchería para lanzamientos y ediciones limitadas, donde la apertura del empaque forma parte de la experiencia de producto.",
     images: [],
@@ -137,7 +138,7 @@ export const products: Product[] = [
     summary: "Catálogos y brochures con encuadernación a elección.",
     description:
       "Material de venta impreso: paginación, papel y encuadernación definidos según el uso, desde el catálogo de feria hasta el brochure de fuerza de venta.",
-    images: [],
+    images: ["/images/products/catalogos-comerciales/01.webp"],
     features: [
       "Encuadernación grapa, hotmelt o anillada",
       "Papeles couché y bond",
@@ -193,7 +194,7 @@ export const products: Product[] = [
     summary: "Banners enrollables para ferias, capacitaciones y activaciones.",
     description:
       "Formato portátil y reutilizable: la estructura se conserva y solo se cambia la gráfica cuando la campaña rota.",
-    images: [],
+    images: ["/images/products/banner-roll-up/01.webp"],
     features: [
       "Estructura de aluminio reutilizable",
       "Gráfica intercambiable",
@@ -301,7 +302,7 @@ export const products: Product[] = [
     summary: "Displays que ordenan el producto y ganan espacio en tienda.",
     description:
       "Mueble de exhibición diseñado alrededor del producto: capacidad, resistencia y armado se definen según la rotación esperada en el punto de venta.",
-    images: [],
+    images: ["/images/products/exhibidores-de-piso/01.webp"],
     features: [
       "Estructura en cartón, MDF o metal",
       "Diseño según formato y peso del producto",
@@ -319,7 +320,7 @@ export const products: Product[] = [
     summary: "Módulos de feria reutilizables entre eventos.",
     description:
       "Sistema modular que se transporta, se rearma y cambia de gráfica, pensado para empresas con calendario de ferias recurrente.",
-    images: [],
+    images: ["/images/products/stands-modulares/01.webp"],
     features: [
       "Sistema modular reutilizable",
       "Gráfica intercambiable por campaña",
@@ -373,7 +374,7 @@ export const products: Product[] = [
     summary: "Sistemas de orientación para oficinas, plantas y clínicas.",
     description:
       "Señalización desarrollada como sistema: nomenclatura, jerarquía y materiales consistentes en todo el recorrido del espacio.",
-    images: [],
+    images: ["/images/products/senaletica-corporativa/01.webp"],
     features: [
       "Sistema de señalización completo",
       "Materiales según uso y tránsito",
@@ -393,7 +394,7 @@ export const products: Product[] = [
     summary: "Libretas personalizadas para equipos, clientes y eventos.",
     description:
       "Artículo de uso diario y alta permanencia. Tapa, papel interior y técnica de personalización se eligen según el destinatario del obsequio.",
-    images: [],
+    images: ["/images/products/cuadernos-corporativos/01.webp"],
     features: [
       "Tapa dura, flexible o ecológica",
       "Personalización por grabado o impresión",
@@ -429,7 +430,7 @@ export const products: Product[] = [
     summary: "Lapiceros con marcado de marca para volumen alto.",
     description:
       "Clásico de campaña con costo unitario bajo y buena permanencia. Disponible en materiales plásticos, metálicos y ecológicos.",
-    images: [],
+    images: ["/images/products/boligrafos-personalizados/01.webp"],
     features: [
       "Materiales plástico, metal o ecológicos",
       "Marcado por serigrafía o grabado láser",
@@ -483,7 +484,7 @@ export const products: Product[] = [
     summary: "Gorras personalizadas para activaciones y equipos.",
     description:
       "Artículo de campaña y uniforme de campo, con bordado que mantiene la definición del logotipo tras el uso.",
-    images: [],
+    images: ["/images/products/gorras-bordadas/01.webp"],
     features: [
       "Modelos clásico, trucker y five panel",
       "Bordado o parche personalizado",
@@ -501,7 +502,7 @@ export const products: Product[] = [
     summary: "Botellas reutilizables con marcado corporativo.",
     description:
       "Uno de los artículos de mayor uso diario y por lo tanto de mayor exposición de marca dentro del merchandising corporativo.",
-    images: [],
+    images: ["/images/products/tomatodos-personalizados/01.webp"],
     features: [
       "Acero inoxidable, tritán y aluminio",
       "Grabado láser o impresión",
@@ -537,7 +538,7 @@ export const products: Product[] = [
     summary: "Termos de alta gama para reconocimientos y regalos ejecutivos.",
     description:
       "Artículo de valor percibido alto, habitual en reconocimientos y en kits ejecutivos de fin de año.",
-    images: [],
+    images: ["/images/products/termos-de-acero/01.webp"],
     features: [
       "Acero inoxidable de doble pared",
       "Grabado láser de precisión",
@@ -645,7 +646,7 @@ export const products: Product[] = [
     summary: "Mochilas personalizadas para equipos y programas internos.",
     description:
       "Artículo de alto valor percibido y uso prolongado, frecuente en kits de bienvenida y programas de reconocimiento.",
-    images: [],
+    images: ["/images/products/mochilas-corporativas/01.webp"],
     features: [
       "Compartimento para laptop",
       "Bordado o etiqueta personalizada",
@@ -663,7 +664,10 @@ export const products: Product[] = [
     summary: "Bolsas de tela reutilizables para campañas y retail.",
     description:
       "Sustituto reutilizable de la bolsa desechable, con amplia superficie de impresión para la marca.",
-    images: [],
+    images: [
+      "/images/products/tote-bags-de-lona/01.webp",
+      "/images/products/tote-bags-de-lona/02.jpg",
+    ],
     features: [
       "Lona, drill y algodón crudo",
       "Serigrafía o impresión full color",
@@ -681,7 +685,7 @@ export const products: Product[] = [
     summary: "Morrales y bolsos ligeros para eventos y activaciones.",
     description:
       "Formato liviano y de bajo costo unitario, adecuado para entregas masivas en congresos y activaciones.",
-    images: [],
+    images: ["/images/products/morrales-personalizados/01.webp"],
     features: [
       "Modelos con cordón y bandolera",
       "Materiales ligeros y resistentes",
@@ -717,7 +721,7 @@ export const products: Product[] = [
     summary: "Llaveros con grabado para entregas de volumen.",
     description:
       "Obsequio compacto y económico por unidad, con acabado metálico que sostiene bien el grabado del logotipo.",
-    images: [],
+    images: ["/images/products/llaveros-metalicos/01.webp"],
     features: [
       "Metal, cuero sintético y combinados",
       "Grabado láser o esmaltado",
@@ -735,7 +739,7 @@ export const products: Product[] = [
     summary: "Estuches y neceseres de viaje con marca.",
     description:
       "Complemento habitual de kits de viaje y sets de bienvenida, con opciones de material y compartimentado.",
-    images: [],
+    images: ["/images/products/neceseres-personalizados/01.webp"],
     features: [
       "Materiales textiles y sintéticos",
       "Compartimentos internos",
@@ -771,7 +775,7 @@ export const products: Product[] = [
     summary: "Conservadoras y loncheras térmicas personalizadas.",
     description:
       "Artículo de campaña de verano con uso prolongado, frecuente en promociones de consumo masivo.",
-    images: [],
+    images: ["/images/products/coolers-portatiles/01.webp"],
     features: [
       "Distintas capacidades",
       "Materiales térmicos resistentes",
@@ -887,5 +891,8 @@ export function featuredProducts(limit?: number): Product[] {
 }
 
 export function countByService(service: ServiceSlug): number {
-  return products.reduce((total, p) => (p.service === service ? total + 1 : total), 0);
+  return products.reduce(
+    (total, p) => (p.service === service ? total + 1 : total),
+    0,
+  );
 }

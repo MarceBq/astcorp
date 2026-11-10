@@ -10,7 +10,23 @@
       "PowerShell(npm run build)",
       "Bash(node -e \"console.log\\('ok'\\)\")",
       "Bash(git checkout *)",
-      "PowerShell(npx prettier --write components/layout/Footer.tsx)"
+      "PowerShell(npx prettier --write components/layout/Footer.tsx)",
+      "PowerShell($tools = @\\(\"python\",\"python3\",\"py\",\"pip\",\"magick\",\"gs\",\"pdftoppm\",\"pdfimages\",\"node\"\\); foreach \\($t in $tools\\) { $c = Get-Command $t -ErrorAction SilentlyContinue; if \\($c\\) { \"$t -> $\\($c.Source\\)\" } else { \"$t -> NO\" } })",
+      "PowerShell(python -c \"import fitz; print\\('pymupdf', fitz.__doc__\\)\" 2>$null)",
+      "PowerShell(python -c \"import pypdf; print\\('pypdf ok'\\)\" 2>$null)",
+      "PowerShell(python -c \"import PIL; print\\('pillow ok'\\)\" 2>$null)",
+      "PowerShell(python -I \"C:\\\\Users\\\\User\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\2a5513342189119b\\\\126309d9-cf2b-49a6-bb4c-af6acb2392ef\\\\scratchpad\\\\inspect_pdf.py\" \"C:\\\\Users\\\\User\\\\OneDrive\\\\Escritorio\\\\CATALOGO_MERCH_ASTCORP_2026.pdf\" 14)",
+      "PowerShell(python -I \"C:\\\\Users\\\\User\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\2a5513342189119b\\\\126309d9-cf2b-49a6-bb4c-af6acb2392ef\\\\scratchpad\\\\inspect_pdf.py\" \"C:\\\\Users\\\\User\\\\OneDrive\\\\Escritorio\\\\BROCHURE_ASTCORP_2026.pdf\" 20)",
+      "PowerShell($s = \"C:\\\\Users\\\\User\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\2a5513342189119b\\\\126309d9-cf2b-49a6-bb4c-af6acb2392ef\\\\scratchpad\"; python -I \"$s\\\\extract_pages.py\" \"C:\\\\Users\\\\User\\\\OneDrive\\\\Escritorio\\\\CATALOGO_MERCH_ASTCORP_2026.pdf\" \"$s\\\\paginas\" merch; python -I \"$s\\\\extract_pages.py\" \"C:\\\\Users\\\\User\\\\OneDrive\\\\Escritorio\\\\BROCHURE_ASTCORP_2026.pdf\" \"$s\\\\paginas\" brochure)",
+      "PowerShell(python -m pip install --quiet pillow 2>&1)",
+      "PowerShell(python -c \"import PIL; print\\('pillow', PIL.__version__\\)\")",
+      "PowerShell(python -I \"C:\\\\Users\\\\User\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\2a5513342189119b\\\\126309d9-cf2b-49a6-bb4c-af6acb2392ef\\\\scratchpad\\\\crop_test.py\")",
+      "PowerShell(python -I \"C:\\\\Users\\\\User\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\2a5513342189119b\\\\126309d9-cf2b-49a6-bb4c-af6acb2392ef\\\\scratchpad\\\\recortar.py\")",
+      "PowerShell(python -I \"C:\\\\Users\\\\User\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\2a5513342189119b\\\\126309d9-cf2b-49a6-bb4c-af6acb2392ef\\\\scratchpad\\\\recortar.py\" 2>&1)",
+      "PowerShell(python -I \"C:\\\\Users\\\\User\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\2a5513342189119b\\\\126309d9-cf2b-49a6-bb4c-af6acb2392ef\\\\scratchpad\\\\instalar.py\")",
+      "PowerShell(node \"C:\\\\Users\\\\User\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\2a5513342189119b\\\\126309d9-cf2b-49a6-bb4c-af6acb2392ef\\\\scratchpad\\\\enlazar.js\")",
+      "PowerShell(cd \"C:\\\\Users\\\\User\\\\OneDrive\\\\Escritorio\\\\astcorp\"; if \\(Test-Path .next\\\\cache\\\\images\\) { Remove-Item -Recurse -Force .next\\\\cache\\\\images; \"cache de imagenes borrada\" } else { \"no habia cache de imagenes\" }; Get-ChildItem -Recurse public\\\\images\\\\products -File | Select-Object @{n='ruta';e={$_.FullName.Replace\\(\"$PWD\\\\\",''\\)}}, @{n='KB';e={[math]::Round\\($_.Length/1KB,1\\)}} | Format-Table -AutoSize)",
+      "PowerShell(python -I \"C:\\\\Users\\\\User\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\2a5513342189119b\\\\126309d9-cf2b-49a6-bb4c-af6acb2392ef\\\\scratchpad\\\\verificar.py\")"
     ]
   }
 }
