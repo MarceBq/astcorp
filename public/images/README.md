@@ -7,8 +7,7 @@ images/
 ├── hero-poster.webp     Poster del video del hero
 ├── clients/             Logotipos de clientes (SVG o PNG con fondo transparente)
 ├── products/<slug>/     Fotos de producto
-├── projects/<slug>/     Fotos de proyectos
-└── sectors/             Portadas de las páginas de sector
+└── services/            Portada de cada línea de negocio
 ```
 
 ## Cómo se conectan con el sitio
@@ -28,10 +27,8 @@ images: [
 
 La primera imagen del array es la que se usa en las tarjetas del catálogo.
 
-**Proyecto** — en `data/projects.ts`, mismo formato. La primera es la portada y
-el resto arma la galería del detalle.
-
-**Sector** — en `data/sectors.ts`: `cover: "/images/sectors/retail.webp"`.
+**Servicio** — en `data/services.ts`: `cover: "/images/services/offset.webp"`.
+Es la imagen que encabeza la card del servicio en el home y en /servicios.
 
 **Cliente** — en `data/clients.ts`: `logo: "/images/clients/nombre.svg"`.
 
@@ -41,7 +38,8 @@ placeholder de marca en lugar de una imagen rota.
 ## Formato recomendado
 
 - **Formato:** WebP (mejor relación peso/calidad). También sirve JPG o PNG.
-- **Producto y proyecto:** 1600 px de ancho como máximo, relación 4:3 o 16:9.
+- **Producto:** 1600 px de ancho como máximo, relación 4:3 (la de la tarjeta).
+- **Portada de servicio:** relación 16:10, el alto del contenedor de la card.
 - **Logotipos de clientes:** SVG preferentemente; si es PNG, 400 px de ancho con
   fondo transparente. Se muestran en escala de grises y recuperan color al pasar
   el cursor.

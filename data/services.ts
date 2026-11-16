@@ -18,7 +18,7 @@ export const services: Service[] = [
     intro:
       "Tiraje corto o volumen alto, con control de color y acabados que sostienen la percepción de una marca premium: desde la papelería que acompaña cada contacto comercial hasta el empaque que llega a la mano del consumidor.",
     icon: "offset",
-    cover: null,
+    cover: "/images/services/offset.webp",
     subcategories: [
       { slug: "papeleria", name: "Papelería" },
       { slug: "empaques", name: "Empaques" },
@@ -35,7 +35,7 @@ export const services: Service[] = [
     intro:
       "Piezas que ocupan espacio físico y compiten por atención: exhibidores, señalética, gráfica de punto de venta e implementaciones que traducen una identidad de marca al mundo real.",
     icon: "visual",
-    cover: null,
+    cover: "/images/services/visual.webp",
     subcategories: [
       { slug: "publicidad-indoor", name: "Publicidad Indoor" },
       { slug: "publicidad-outdoor", name: "Publicidad Outdoor" },
@@ -53,7 +53,7 @@ export const services: Service[] = [
     intro:
       "Artículos que la gente conserva y usa. Selección de producto, técnica de personalización y control de tiempos para que la campaña llegue completa y a tiempo.",
     icon: "merch",
-    cover: null,
+    cover: "/images/services/merch.webp",
     subcategories: [
       { slug: "oficina", name: "Oficina" },
       { slug: "textil", name: "Textil" },
@@ -75,7 +75,7 @@ export const services: Service[] = [
     intro:
       "Curaduría, empaque y armado de kits corporativos: la caja, el contenido, la impresión y el despacho gestionados como un solo proyecto.",
     icon: "box",
-    cover: null,
+    cover: "/images/services/box-corporativos.webp",
     subcategories: [
       { slug: "packs-navidenos", name: "Packs Navideños" },
       { slug: "regalos-ejecutivos", name: "Regalos Ejecutivos" },
@@ -102,7 +102,7 @@ export const services: Service[] = [
     intro:
       "Una marca se sostiene cuando se ve igual en todos sus soportes. Trabajamos la identidad y, sobre todo, su bajada a producción: que el color, la tipografía y los acabados se mantengan iguales del arte final a la pieza impresa.",
     icon: "branding",
-    cover: null,
+    cover: "/images/services/branding.webp",
     subcategories: [
       { slug: "identidad-visual", name: "Identidad visual" },
       { slug: "manual-de-marca", name: "Manual de marca" },
@@ -120,7 +120,7 @@ export const services: Service[] = [
     intro:
       "Un proyecto inmobiliario comunica en varios frentes a la vez: la valla en obra, la sala de ventas, el brochure que se lleva el cliente y el kit que recibe al firmar. Producimos todo ese material como un solo paquete, con el mismo estándar gráfico.",
     icon: "realestate",
-    cover: null,
+    cover: "/images/services/proyectos-inmobiliarios.webp",
     subcategories: [
       { slug: "sala-de-ventas", name: "Sala de ventas" },
       { slug: "senaletica-de-obra", name: "Señalética de obra" },
