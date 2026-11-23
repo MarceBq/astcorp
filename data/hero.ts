@@ -1,20 +1,41 @@
 /**
- * Assets del hero de portada.
+ * Imágenes del hero de portada.
  *
- * PARA CAMBIAR EL VIDEO: reemplazar el archivo en /public/videos/hero.mp4.
- * No hace falta tocar código.
+ * Se muestran en bucle, una tras otra, en el orden de este array. La última
+ * es la de cierre.
  *
- * `webm` es opcional. Si se genera una versión WebM (menor peso en Chrome y
- * Firefox), colocarla en /public/videos/hero.webm y apuntar la ruta aquí.
+ * PARA CAMBIARLAS: reemplazar los archivos en /public/images/hero/ o editar
+ * este array. No hace falta tocar código.
  *
- * `poster` se muestra mientras el video carga y en conexiones lentas.
- * Se entrega un poster de marca por defecto; reemplazarlo por un fotograma
- * real del video cuando esté disponible.
+ * Cada entrada tiene dos recortes de la misma foto, los dos al mismo tamaño
+ * que sus hermanos para que ninguna salte de encuadre al pasar a la
+ * siguiente:
  *
- * Poner `mp4: null` desactiva el video y deja únicamente el fondo de marca.
+ *   `src`    1920x1080 (16:9) — la proporción del hero en escritorio.
+ *   `movil`  1080x1440 (3:4)  — en un teléfono el 16:9 se recortaría hasta
+ *                               dejar ver apenas una cuarta parte del ancho.
+ *
+ * Dejar el array vacío desactiva el pase y deja solo el fondo de marca.
  */
-export const heroMedia = {
-  mp4: "/videos/hero.mp4" as string | null,
-  webm: null as string | null,
-  poster: "/images/hero-poster.webp" as string | null,
-};
+export const heroSlides: { src: string; movil: string; alt: string }[] = [
+  {
+    src: "/images/hero/01-corporativo.webp",
+    movil: "/images/hero/01-corporativo-movil.webp",
+    alt: "Set corporativo ASTCORP: taza, botella, tote bag, polo, cuaderno y lentes",
+  },
+  {
+    src: "/images/hero/02-verano.webp",
+    movil: "/images/hero/02-verano-movil.webp",
+    alt: "Línea de verano ASTCORP: botella, toalla, sombrero, abanico y ventilador de mano",
+  },
+  {
+    src: "/images/hero/03-kit-azul.webp",
+    movil: "/images/hero/03-kit-azul-movil.webp",
+    alt: "Kit corporativo ASTCORP en azul: botella, tote bag, polo, taza y cuaderno",
+  },
+  {
+    src: "/images/hero/04-cuadernos.webp",
+    movil: "/images/hero/04-cuadernos-movil.webp",
+    alt: "Cuadernos anillados ASTCORP con la frase Hacemos realidad tus proyectos",
+  },
+];
